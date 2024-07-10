@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
 GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
 
+@csrf_exempt
 def index(request):
     return render(request, 'index.html')
 
