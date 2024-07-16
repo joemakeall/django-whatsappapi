@@ -102,6 +102,9 @@ DATABASES = {
         'PASSWORD': 'economapp123',
         'HOST': 'economapp.cbek88auo7op.sa-east-1.rds.amazonaws.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
     }
 }
 
