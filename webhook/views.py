@@ -13,14 +13,23 @@ GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
 def index(request):
     return render(request, 'index.html')
 
+@csrf_exempt
 def verify(request):
-    data = json.loads(request.body)
+    if request.method == 'GET':
+        mode = request.GET.get('hub.mode')
+        token = request.GET.get('hub.verify_token')
+        challenge = request.GET.get('hub.challenge')
 
-    mode = data.get('hub_mode')
-    token = data.get('hub_verify_token')
-    challenge = data.get('hub_challenge')
-    
-    if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
-        return HttpResponse(challenge, status=200)
+        print(mode)
+        if challenge is not None:
+            try:
+                challenge = int(challenge)
+            except ValueError:
+                return HttpResponse('Invalid challenge value', status=400)
+
+        if mode == 'subscribe' and token == WEBHOOK_VERIFY_TOKEN:
+            return HttpResponse(str(challenge), status=200)
+        else:
+            return HttpResponse('Forbidden', status=403)
     else:
-        return HttpResponse('Forbidden', status=403)
+        return HttpResponse('Method Not Allowed', status=405)
