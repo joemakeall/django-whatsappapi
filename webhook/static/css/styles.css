@@ -1,26 +1,237 @@
-/* static/css/styles.css */
-
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px; /* Ajuste a altura conforme necessário */
+    margin-right: 20px;
+}
+
+.banner {
+    width: 100%;
+    height: 33vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel {
+    display: flex;
+    animation: slide 10s infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0%); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0%); }
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content .card {
+    width: 30%;
+    text-align: center;
+}
+
+.content .card img {
+    width: 100%;
+    height: auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.whatsapp-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Estilos específicos para a página de login */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.login-box {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    text-align: center;
 }
 
-h1 {
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: calc(100% - 22px); /* Ajuste de largura para incluir padding */
+    padding: 10px;
+    margin-right: 10px; /* Adiciona margem à direita */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #555;
+}
+
+.input-group p {
+    margin-top: 10px;
+}
+
+.input-group p a {
     color: #333;
+    text-decoration: none;
 }
 
-p {
-    font-size: 16px;
-    color: #666;
+.input-group p a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para a página de cadastro */
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding-top: 180px; /* Adiciona padding superior */
+}
+
+.register-box {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    padding-left: 20px; /* Ajuste padding direito */
+    padding-right: 20px; /* Ajuste padding direito */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 10px; /* Adiciona margem superior */
+    margin-right: 10px; /* Adiciona margem à direita */
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-box .form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-box .input-group {
+    margin-bottom: 15px;
+    flex: 0 0 48%;
+}
+
+.register-box .input-group input[type="file"] {
+    padding: 3px;
+}
+
+.register-box .input-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.register-box .input-group button:hover {
+    background-color: #555;
+}
+
+.register-box .input-group p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register-box .input-group p a {
+    color: #333;
+    text-decoration: none;
+}
+
+.register-box .input-group p a:hover {
+    text-decoration: underline;
 }
