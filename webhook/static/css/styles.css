@@ -32,7 +32,7 @@ body {
 
 .banner {
     width: 100%;
-    height: 33vh;
+    height: 50vh;
     overflow: hidden;
     position: relative;
 }
@@ -172,16 +172,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: #f4f4f4;
-    padding-top: 180px; /* Adiciona padding superior */
+    padding: 20px; /* Adiciona padding superior */
 }
 
 .register-box {
     width: 80%; /* Ajuste a largura conforme necessário */
     padding-left: 20px; /* Ajuste padding direito */
     padding-right: 20px; /* Ajuste padding direito */
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     text-align: left;
@@ -235,3 +235,95 @@ body {
 .register-box .input-group p a:hover {
     text-decoration: underline;
 }
+
+.input-group.inline {
+    align-items: center;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.input-group.inline input[type="checkbox"] {
+    margin-right: 10px; /* Ajuste conforme necessário */
+    float: right;
+}
+
+.input-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 305px;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #333;
+    color: white;
+    transition: 0.3s;
+    padding-top: 60px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+}
+
+.sidebar-header .close-btn {
+    font-size: 36px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px 15px;
+}
+
+.sidebar-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #575757;
+}
+
+.open-btn {
+    font-size: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 10px;
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.3s;
+}
+
+/* Active state for the sidebar */
+.sidebar.active {
+    left: 0;
+}
+
+.content.active {
+    margin-left: 250px;
+}
+

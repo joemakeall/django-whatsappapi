@@ -7,7 +7,10 @@ from django.core.files.storage import FileSystemStorage
 from .forms import RegisterForm
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Messages  # Importe seu modelo Message aqui
+from .models import Messages, Company  # Importe seu modelo Message aqui
+from django.contrib import messages
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate, login as auth_login
 from django.utils import timezone
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
@@ -19,19 +22,77 @@ def index(request):
 
 @csrf_exempt
 def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        try:
+            user = Company.objects.get(email=email)
+            if user.check_password(password):
+                # Autenticação bem-sucedida
+                request.session['user_id'] = user.id
+                return redirect('dashboard')  # Redirecionar para a página do menu lateral
+            else:
+                messages.error(request, 'Senha incorreta.')
+        except Company.DoesNotExist:
+            messages.error(request, 'E-mail não encontrado.')
+
     return render(request, 'login.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Processar os dados do formulário e salvar no banco de dados
-            form.save()
-            return redirect('login')
-    else:
-        form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+        cnpj = request.POST['cnpj']
+        company_name = request.POST['company_name']
+        trade_name = request.POST['trade_name']
+        responsible_name = request.POST['responsible_name']
+        state_registration = request.POST['state_registration']
+        instagram = request.POST['instagram']
+        whatsapp = 'whatsapp' in request.POST
+        cell_phone = request.POST['cell_phone']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        confirm_email = request.POST['confirm_email']
+        cep = request.POST['cep']
+        number = request.POST['number']
+        address = request.POST['address']
+        neighborhood = request.POST['neighborhood']
+        complement = request.POST['complement']
+        city = request.POST['city']
+        state = request.POST['state']
+        logo = request.FILES['logo'] if 'logo' in request.FILES else None
+        password = request.POST['password']
+
+        # Cria uma nova empresa (Company)
+        company = Company(
+            cnpj=cnpj,
+            company_name=company_name,
+            trade_name=trade_name,
+            responsible_name=responsible_name,
+            state_registration=state_registration,
+            instagram=instagram,
+            whatsapp=whatsapp,
+            cell_phone=cell_phone,
+            phone=phone,
+            email=email,
+            confirm_email=confirm_email,
+            cep=cep,
+            number=number,
+            address=address,
+            neighborhood=neighborhood,
+            complement=complement,
+            city=city,
+            state=state,
+            logo=logo,
+            password=password
+        )
+        company.save()
+        messages.success(request, 'Cadastro realizado com sucesso.')
+        return redirect('login')
+    return render(request, 'register.html')
 
 @csrf_exempt
 def verify(request):

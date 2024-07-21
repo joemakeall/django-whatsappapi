@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button class="close-btn">&times;</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#">Opção 1</a></li>
+            <li><a href="#">Opção 2</a></li>
+            <li><a href="#">Opção 3</a></li>
+            <li><a href="#">Opção 4</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <button class="open-btn">&#9776; Abrir Menu</button>
+        <h1>Bem-vindo à Dashboard</h1>
+        <p>Conteúdo da página principal</p>
+    </div>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>
