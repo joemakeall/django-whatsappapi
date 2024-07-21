@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Empresa</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button class="close-btn">&times;</button>
+        </div>
+        <ul class="sidebar-menu">
+            {% include 'sidebar.html' %}
+        </ul>
+    </div>
+    <div class="content">
+        <button class="open-btn">&#9776; Abrir Menu</button>
+        <div class="container">
+            <h1>Detalhes da Empresa</h1>
+            <p><strong>Razão Social:</strong> {{ company.company_name }}</p>
+            <p><strong>Nome Fantasia:</strong> {{ company.trade_name }}</p>
+            <p><strong>CNPJ:</strong> {{ company.cnpj }}</p>
+            <p><strong>Email:</strong> {{ company.email }}</p>
+            <p><strong>Telefone:</strong> {{ company.phone }}</p>
+            <p><strong>Celular:</strong> {{ company.cell_phone }}</p>
+            <p><strong>Endereço:</strong> {{ company.address }}, {{ company.number }}</p>
+            <p><strong>Bairro:</strong> {{ company.neighborhood }}</p>
+            <p><strong>Complemento:</strong> {{ company.complement }}</p>
+            <p><strong>Cidade:</strong> {{ company.city }}</p>
+            <p><strong>Estado:</strong> {{ company.state }}</p>
+            <a href="{% url 'list_companies' %}">Voltar para a Lista</a>
+        </div>
+    </div>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var openBtn = document.querySelector('.open-btn');
-    var closeBtn = document.querySelector('.close-btn');
-    var sidebar = document.querySelector('.sidebar');
-    var content = document.querySelector('.content');
+    const openBtn = document.querySelector('.open-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
 
     openBtn.addEventListener('click', function() {
         sidebar.classList.add('active');

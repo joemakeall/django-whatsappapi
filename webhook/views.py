@@ -2,16 +2,16 @@ import os
 import json
 import requests
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from .forms import RegisterForm
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Messages, Company  # Importe seu modelo Message aqui
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login as auth_login
 from django.utils import timezone
+from .models import Messages, Company
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
 GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
@@ -125,3 +125,10 @@ def verify(request):
     else:
         return HttpResponse('Method Not Allowed', status=405)
 
+def list_companies(request):
+    companies = Company.objects.all()
+    return render(request, 'list_companies.html', {'companies': companies})
+
+def company_detail(request, id):
+    company = get_object_or_404(Company, id=id)
+    return render(request, 'company_detail.html', {'company': company})

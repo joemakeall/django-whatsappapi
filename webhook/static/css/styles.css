@@ -254,7 +254,7 @@ body {
     margin-right: 305px;
 }
 
-/* Sidebar */
+/* Menu lateral */
 .sidebar {
     height: 100%;
     width: 250px;
@@ -305,12 +305,16 @@ body {
 }
 
 .open-btn {
-    font-size: 36px;
+    font-size: 24px; /* Diminuir o tamanho da fonte */
     background: none;
     border: none;
     cursor: pointer;
     color: #333;
     padding: 10px;
+    position: fixed; /* Para fixar no canto superior esquerdo */
+    top: 10px; /* Ajustar a posição */
+    left: 10px; /* Ajustar a posição */
+    z-index: 1000; /* Certificar que o botão fica acima de outros elementos */
 }
 
 .content {
@@ -326,4 +330,6 @@ body {
 .content.active {
     margin-left: 250px;
 }
+
+
 

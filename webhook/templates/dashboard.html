@@ -15,16 +15,16 @@
             <button class="close-btn">&times;</button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#">Opção 1</a></li>
-            <li><a href="#">Opção 2</a></li>
-            <li><a href="#">Opção 3</a></li>
-            <li><a href="#">Opção 4</a></li>
+            <!-- Inclui o menu lateral -->
+            {% include 'sidebar.html' %}
         </ul>
     </div>
     <div class="content">
         <button class="open-btn">&#9776; Abrir Menu</button>
         <h1>Bem-vindo à Dashboard</h1>
         <p>Conteúdo da página principal</p>
+        {% block content %}
+        {% endblock %}
     </div>
     <script src="{% static 'js/dashboard.js' %}"></script>
 </body>

@@ -1,7 +1,7 @@
+function openWhatsApp() {
+    window.location.href = 'https://wa.me/11985379061';
+}
 document.addEventListener('DOMContentLoaded', function() {
-    function openWhatsApp() {
-        window.location.href = 'https://wa.me/SeuNumeroDeWhatsApp';
-    }
 
     function buscarCep() {
         var cep = document.getElementById('cep').value.replace(/\D+/g, ''); // Remove caracteres não numéricos
@@ -129,12 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         input.value = masked;
     }
-
-    function toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle('active');
-    }   
-
+    
     document.getElementById('cep').addEventListener('input', maskCep);
     document.getElementById('cep').addEventListener('blur', buscarCep);
     document.getElementById('confirm_email').addEventListener('blur', validateEmail);
