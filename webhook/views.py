@@ -120,8 +120,7 @@ def verify(request):
         except json.JSONDecodeError:
             return HttpResponse('Invalid JSON', status=400)
         except Exception as e:
-            return HttpResponse(f'Error: {str(e)}', status=500)
-    
+            return HttpResponse(f'Error: {str(e)}', status=500)    
     else:
         return HttpResponse('Method Not Allowed', status=405)
 
