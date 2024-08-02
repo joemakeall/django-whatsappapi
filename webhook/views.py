@@ -1,17 +1,14 @@
 import os
 import json
-import requests
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.files.storage import FileSystemStorage
-from .forms import RegisterForm
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from django.contrib.auth.hashers import check_password
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import login as auth_login
 from django.utils import timezone
-from .models import Messages, Company
+from .models import Messages, Company, Products, Reviews
+from django.contrib.auth.models import User
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
 GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
@@ -19,6 +16,10 @@ GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
 @csrf_exempt
 def index(request):
     return render(request, 'index.html')
+
+@csrf_exempt
+def chat(request):
+    return render(request, 'chat.html')
 
 @csrf_exempt
 def login(request):
@@ -40,7 +41,25 @@ def login(request):
     return render(request, 'login.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard_n.html')
+
+def dashboard_a(request):
+    return render(request, 'dashboard_a.html')
+
+def dashboard_b(request):
+    return render(request, 'dashboard_b.html')
+
+def new_sidebar(request):
+    return render(request, 'new_sidebar.html')
+
+def products(request):
+    return render(request, 'products.html')
+
+@csrf_exempt
+def product(request, codigo):
+    produto = get_object_or_404(Products, codigo=codigo)
+    reviews = Reviews.objects.filter(product=produto)
+    return render(request, 'product.html', {'produto': produto, 'reviews': reviews})
 
 @csrf_exempt
 def register(request):
@@ -124,9 +143,80 @@ def verify(request):
     else:
         return HttpResponse('Method Not Allowed', status=405)
 
-def list_companies(request):
+@csrf_exempt
+def rate_product(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            produto_id = data.get('produto_id')
+            rating = data.get('rating')
+
+            if not produto_id or not rating:
+                return JsonResponse({'success': False, 'message': 'Dados insuficientes.'})
+
+            produto = Products.objects.get(id=produto_id)
+            user = request.user
+
+            review = Review.objects.create(
+                product=produto,
+                author=user,
+                rating=rating,
+                comment=data.get('comment', '')
+            )
+
+            produto.update_rating()
+
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+
+    return JsonResponse({'success': False, 'message': 'Método não permitido.'})
+
+@csrf_exempt
+def add_review(request, product_id):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        rating = data.get('rating')
+        comment = data.get('comment')
+
+        try:
+            product = Products.objects.get(id=product_id)
+            
+            # Usar a empresa autenticada
+            user_id = request.session.get('user_id')
+            user = Company.objects.get(id=user_id) if user_id else None
+
+            Reviews.objects.create(
+                product=product,
+                rating=rating,
+                comment=comment,
+                author=user
+            )
+            
+            # Atualizar rating do produto
+            product.update_rating()
+            
+            return JsonResponse({'success': True})
+        except Company.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Usuário não encontrado'})
+        except Products.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Produto não encontrado'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+
+    return JsonResponse({'success': False, 'message': 'Método inválido'})
+
+def get_reviews(request, product_id):
+    try:
+        product = Products.objects.get(id=product_id)
+        reviews = Review.objects.filter(product=product).values('rating', 'comment', 'author__username', 'created_at')
+        return JsonResponse({'success': True, 'reviews': list(reviews)})
+    except Products.DoesNotExist:
+        return JsonResponse({'success': False, 'message': 'Produto não encontrado'})
+    
+def companies(request):
     companies = Company.objects.all()
-    return render(request, 'list_companies.html', {'companies': companies})
+    return render(request, 'companies.html', {'companies': companies})
 
 def company_detail(request, id):
     company = get_object_or_404(Company, id=id)

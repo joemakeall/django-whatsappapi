@@ -1,0 +1,375 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Example</title>
+    <link rel="stylesheet" href="{% static 'css/styles_a.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo-container">
+                <a href="/">
+                    <img src="{% static 'img/logo-direcao-digital.png' %}" alt="Logo Direção Digital" class="logo">
+                    <img src="{% static 'img/letrero-direcao-digital.png' %}" alt="Logo Direção Digital" class="logo">
+                </a>
+            </div>
+            <div class="top-icons">
+                <div class="icon"><i class="fas fa-comments"></i></div>
+                <div class="icon"><i class="fas fa-bell"></i></div>
+                <div class="icon profile">
+                    <i class="fas fa-user"></i>
+                    <div class="profile-menu">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="{% url 'dashboard_b' %}">Menu 1</a></li>
+                <li><a href="#">Menu 2</a></li>
+                <li><a href="#">Menu 3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <aside class="sidebar">
+        <div class="sidebar-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="#">                    <i class="fas fa-home">         </i><span>Home     </span></a></li>
+                <li><a href="#">                    <i class="fas fa-user">         </i><span>Profile  </span></a></li>
+                <li><a href="#">                    <i class="fas fa-cog">          </i><span>Settings </span></a></li>
+                <li><a href="{% url 'chat' %}">     <i class="fas fa-comments">     </i><Span>Chat     </Span></a></li>
+                <li><a href="{% url 'products' %}"> <i class="fas fa-glasses">      </i><Span>Products </Span></a></li>
+                <li><a href="{% url 'companies' %}"><i class="fas fa-industry">     </i><Span>Companies </Span></a></li>
+                <li><a href="#">                    <i class="fas fa-sign-out-alt"> </i><span>Logout   </span></a></li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        <div class="container">
+            <!-- Linha 1 -->
+            <div class="row">
+                <div class="card analytic-card">
+                    <h6 class="card-title">ACTIVE USERS</h6>
+                    <div class="card-value">
+                        <span>180</span>
+                        <i class="fa fa-users card-icon"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="percentage"><i class="fa fa-arrow-up"></i> 5.27%</span>
+                        <span class="info-text">Since last month</span>
+                    </div>
+                </div>
+                <div class="card sales-card">
+                    <h6 class="card-title">SALES</h6>
+                    <div class="card-value">
+                        <span>$12,340</span>
+                        <i class="fa fa-dollar-sign card-icon"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="percentage-down"><i class="fa fa-arrow-down"></i> -3.15%</span>
+                        <span class="info-text">Since last month</span>
+                    </div>
+                </div>
+                <div class="card orders-card">
+                    <h6 class="card-title">ORDERS</h6>
+                    <div class="card-value">
+                        <span>235</span>
+                        <i class="fa fa-box card-icon"></i>
+                    </div>
+                    <div class="card-info">
+                        <span class="percentage"><i class="fa fa-arrow-up"></i> 2.89%</span>
+                        <span class="info-text">Since last month</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha 2 -->
+            <div class="row">
+                <div class="card chart">
+                    <h6>SESSIONS OVERVIEW</h6>
+                    <canvas id="multipleLineChart"></canvas>
+                </div>
+                <div class="card map">
+                    <h6>SESSIONS BY COUNTRY</h6>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2047.3512632871746!2d-46.8905145!3d-23.213992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf26b303bddc0d%3A0x10ef1a71b99b6c80!2sR.%20Jo%C3%A3o%20Carbonari%20J%C3%BAnior%2C%20163%20-%20Vila%20Nova%20Jundiainopolis%2C%20Jundia%C3%AD%20-%20SP%2C%2013210-705!5e0!3m2!1sen!2sin!4v1530774403788"
+                        height="400" style="border:0; width:100%;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Linha 3 -->
+            <div class="row">
+                <div class="column card">
+                    <div class="card-header">
+                        <h6 class="card-title">VIEWS PER MINUTE</h6>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Refresh Report</a></li>
+                                <li><a class="dropdown-item" href="#">Export Report</a></li>
+                            </ul>
+                          </div>
+                    </div>
+                    <div class="card-body">
+                        <img src="{% static 'img/3.jpg' %}" class="card-image" alt="View Image">
+                        <table class="card-table">
+                            <thead>
+                                <tr>
+                                    <th>Page</th>
+                                    <th>Views</th>
+                                    <th>Bounce Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>/Lorem/-analytics</td>
+                                    <td>25</td>
+                                    <td>@87.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>/Lorem/-analytics</td>
+                                    <td>25</td>
+                                    <td>@87.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>/Lorem/-analytics</td>
+                                    <td>25</td>
+                                    <td>@87.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>/Lorem/-analytics</td>
+                                    <td>25</td>
+                                    <td>@87.5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-title">SESSIONS BY BROWSER</h6>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Refresh Report</a></li>
+                                <li><a class="dropdown-item" href="#">Export Report</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <img src="{% static 'img/3.jpg' %}" class="card-image-2" alt="View Image">
+                    </div>
+                </div>
+                <div class="column card">
+                    <h6 class="card-title">Card 8</h6>
+                    <p>Content for Card 8</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            Footer content
+        </div>
+    </footer>
+    <script src="{% static 'js/scripts_a.js' %}"></script>
+    <script>
+        //================ Line chart With Multiple Lines ================//
+
+        var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+        new Chart("multipleLineChart", {
+            labels: 'Multiple Line Chart',
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: 'India',
+                    data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                    borderColor: "red",
+                    fill: false
+                }, {
+                    label: 'US',
+                    data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+                    borderColor: "green",
+                    fill: false
+                }, {
+                    label: 'China',
+                    data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+                    borderColor: "blue",
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true, // Garante que o gráfico é responsivo
+                legend: { display: false }
+            }
+        });
+
+        //============== Bar Chart Single Dataset ================//
+
+        var xValuesBarSingle = ["Italy", "France", "Spain", "USA", "Argentina"];
+        var yValuesBarSingle = [55, 49, 44, 24, 15];
+        var barColors = ["red", "green", "blue", "orange", "brown"];
+
+        new Chart("barSingleChart", {
+            type: "bar",
+            data: {
+                labels: xValuesBarSingle,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValuesBarSingle
+                }]
+            },
+            options: {}
+        });
+
+
+        //================ Line chart With SINGLE Line ================//
+
+        const labelsLine = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July'
+        ];
+
+        const dataLine = {
+            labels: labelsLine,
+            datasets: [{
+                label: 'Products',
+                backgroundColor: "rgba(0,0,0,1.0)",
+                borderColor: "rgba(0,0,0,0.1)",
+                data: [0, 10, 5, 2, 20, 30, 45],
+
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: dataLine,
+            options: {}
+        };
+
+        const lineChart = new Chart(
+            document.getElementById('lineChart'),
+            config
+        );
+
+        //============== Pie Chart Single Dataset ============
+
+        var xValuesPieChart = ["Crome", "Firefox", "Safari", "Android", "Internet Explorer"];
+        var yValuesPieChart = [55, 49, 44, 24, 15];
+        var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+            "#1e7145"
+        ];
+
+        new Chart("pieChart", {
+            type: "pie",
+            data: {
+                labels: xValuesPieChart,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValuesPieChart
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Production 2022"
+                }
+            }
+        });
+
+        //============== Bar Chart Multiple Datasets ============
+        const dataBar = [{ x: 'Jan', net: 100, cogs: 50, gm: 50 }, { x: 'Feb', net: 120, cogs: 55, gm: 75 }];
+        const configBar = {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb'],
+                datasets: [{
+                    label: 'Net sales',
+                    data: dataBar,
+                    parsing: {
+                        yAxisKey: 'net'
+                    }
+                }, {
+                    label: 'COGS',
+                    data: dataBar,
+                    parsing: {
+                        yAxisKey: 'cogs'
+                    }
+                }, {
+                    label: 'GM',
+                    data: dataBar,
+                    parsing: {
+                        yAxisKey: 'gm'
+                    }
+                }]
+            },
+            options: {
+                indexAxis: 'x',
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const barChart = new Chart(
+            document.getElementById('barChart'),
+            configBar
+        );
+    </script>
+</body>
+
+</html>

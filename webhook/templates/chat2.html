@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<title>Admin Console</title>
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/nav.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+
+	<link href="css/dashboard.css" rel="stylesheet">
+	<link href="css/chat.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">
+			<h4>ADMINISTRATOR</h4>
+		</a>
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+			data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<ul class="nav hide">
+
+			<li class="nav-item sign_box_1">
+				<a class="nav-link  text-light" href="#"><i class="fa fa-comment"></i> 3</a>
+			</li>
+
+
+			<li class="nav-item dropdown notification">
+				<a class="nav-link dropdown-toggle text-white  border-0" data-bs-toggle="dropdown" href="#"
+					role="button" aria-expanded="false"><button type="button"
+						class="border-0 btn bg-dark text-white   position-relative">
+						<i class="fa fa-bell"></i>
+						<span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+							style="top:5px;">
+							3+
+							<span class="visually-hidden">unread messages</span>
+						</span>
+					</button></a>
+				<ul class="dropdown-menu drop_1" style="left:auto; right:0; min-width:300px;">
+					<li class="noti_p">Notification <span class="pull-right"><a href="#">Clear All</a></span></li>
+					<li class="noti_p1">
+						<div class="noti_i p-2  row m-0">
+							<div class="col-sm-3">
+								<div class="noti_il">
+									<a href="#"><img src="img/1.jpg" alt="abc" class="rounded-circle w-100"></a>
+								</div>
+							</div>
+							<div class="col-sm-9 p-0">
+								<div class="noti_ir">
+									<p class="mb-0">Caleb Flakelar commented on Admin
+										<small class="text-muted font-13">1 min ago</small>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</li>
+					<li class="noti_p1">
+						<div class="noti_i p-2  row m-0">
+							<div class="col-sm-3">
+								<div class="noti_il">
+									<a href="#"><img src="img/1.jpg" alt="abc" class="rounded-circle w-100"></a>
+								</div>
+							</div>
+							<div class="col-sm-9 p-0">
+								<div class="noti_ir">
+									<p class="mb-0">Caleb Flakelar commented on Admin
+										<small class="text-muted font-13">1 min ago</small>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</li>
+					<li class="noti_p1">
+						<div class="noti_i p-2  row m-0">
+							<div class="col-sm-3">
+								<div class="noti_il">
+									<a href="#"><img src="img/1.jpg" alt="abc" class="rounded-circle w-100"></a>
+								</div>
+							</div>
+							<div class="col-sm-9 p-0">
+								<div class="noti_ir">
+									<p class="mb-0">Caleb Flakelar commented on Admin
+										<small class="text-muted font-13">1 min ago</small>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</li>
+					<li class="noti_p1 border-0">
+						<div class="noti_i p-2  row m-0">
+							<div class="col-sm-3">
+								<div class="noti_il">
+									<a href="#"><img src="img/1.jpg" alt="abc" class="rounded-circle w-100"></a>
+								</div>
+							</div>
+							<div class="col-sm-9 p-0">
+								<div class="noti_ir">
+									<p class="mb-0">Caleb Flakelar commented on Admin
+										<small class="text-muted font-13">1 min ago</small>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item sign_box dropdown">
+				<a class="nav-link dropdown-toggle text-white  border-0" data-bs-toggle="dropdown" href="#"
+					role="button" aria-expanded="false"><img alt="abc" class="rounded-circle" width="30" height="30"
+						src="img/1.jpg">Eget Nulla</a>
+				<ul class="dropdown-menu drop_2" style="left:auto; right:0; min-width:200px;">
+					<li class="small" style="padding: 0.25rem 1rem;">Welcome !</li>
+					<li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> My Account</a></li>
+					<li><a class="dropdown-item" href="#"><i class="fa fa-gear"></i> Settings</a></li>
+					<li><a class="dropdown-item" href="#"><i class="fa fa-life-bouy"></i> Support</a></li>
+					<li><a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Lock Screen</a></li>
+					<li><a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+				</ul>
+			</li>
+		</ul>
+	</header>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+				style="overflow-y: auto; max-height:inherit;">
+				<div class="position-sticky">
+
+					<ul class="nav flex-column mb-2 list-unstyled ps-0">
+						<li class="nav-item">
+							<a href="index.html"
+								class="btn btn-toggle align-items-center rounded w-100 tag_m  no_drop"><i
+									class="fa fa-dashboard icon-before"></i><span class="btn">Dashboard</span></a>
+
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed  w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false"><i
+									class="fa fa-shopping-cart icon-before"></i><span class="btn">Ecommerce</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="orders-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="ecommerce_prod.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Product</span></a></li>
+									<li><a href="ecommerce_prod_details.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Product Details</span></a></li>
+									<li><a href="ecommerce_orders.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Order</span></a></li>
+									<li><a href="ecommerce_orders_detail.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Order Details</span></a></li>
+									<li><a href="ecommerce_customers.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Customers</span></a></li>
+									<li><a href="ecommerce_sellers.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Sellers</span></a></li>
+
+									<li><a href="cart.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Shopping Cart</span></a></li>
+
+									<li><a href="checkout.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Checkout</span></a></li>
+
+									<li><a href="billing.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Billing</span></a></li>
+
+									<li><a href="invoice.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Invoice</span></a></li>
+
+									<li><a href="pricing.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Pricing</span></a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><i
+									class="fa fa-briefcase icon-before"></i><span class="btn">Projects</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="account-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="project_list.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Lists</span></a></li>
+									<li><a href="project_list_detail.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Details</span></a></li>
+									<li><a href="create_project.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Create Project</span></a></li>
+
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#Authent-collapse" aria-expanded="false"><i
+									class="fa fa-lock icon-before"></i><span class="btn">Authentication</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="Authent-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a target="_blank" href="authent_login.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Login</span></a></li>
+									<li><a target="_blank" href="authent_logout.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Logout</span></a></li>
+									<li><a target="_blank" href="authent_register.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Register</span></a></li>
+
+									<li><a target="_blank" href="authent_forgot.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Forgot Password</span></a></li>
+
+									<li><a target="_blank" href="authent_confirm_mail.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Confirm Mail</span></a></li>
+
+									<li><a target="_blank" href="authent_reset_pass.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Reset Password</span></a></li>
+
+									<li><a target="_blank" href="authent_error.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Error</span></a></li>
+
+									<li><a target="_blank" href="authent_card_login.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Login</span></a></li>
+
+									<li><a target="_blank" href="authent_card_logout.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Logout</span></a></li>
+
+									<li><a target="_blank" href="authent_card_register.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Register</span></a></li>
+
+									<li><a target="_blank" href="authent_card_forgot.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Forgot</span></a></li>
+
+									<li><a target="_blank" href="authent_card_confirm_mail.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Confirm Mail</span></a></li>
+
+									<li><a target="_blank" href="authent_card_reset_pass.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Card Reset Pass</span></a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#pages-collapse" aria-expanded="false"><i
+									class="fa fa-copy icon-before"></i><span class="btn">Pages</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="pages-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="profile.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Profile</span></a></li>
+									<li><a target="_blank" href="authen_login.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Login</span></a></li>
+									<li><a target="_blank" href="login2.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Login 2</span></a></li>
+									<li><a target="_blank" href="error.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Error</span></a></li>
+									<li><a target="_blank" href="authen_register.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Register</span></a></li>
+									<li><a target="_blank" href="authen_logout.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Logout</span></a></li>
+									<li><a target="_blank" href="authen_recover.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Recover Password</span> </a></li>
+									<li><a target="_blank" href="authen_lock_screen.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Lock Screen</span></a></li>
+									<li><a target="_blank" href="authen_confirm_mail.html"
+											class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Confirm Mail</span> </a></li>
+
+								</ul>
+							</div>
+						</li>
+
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#base-collapse" aria-expanded="false"><i
+									class="fa fa-diamond icon-before"></i><span class="btn">Base UI</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="base-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="base_accordions.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Accordions</span></a></li>
+									<li><a href="base_alerts.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Alerts</span></a></li>
+									<li><a href="base_badges.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Badges</span> </a></li>
+									<li><a href="base_breadcrumb.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Breadcrumb</span></a></li>
+									<li><a href="base_buttons.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Buttons</span> </a></li>
+									<li><a href="base_card.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Cards</span></a></li>
+									<li><a href="base_carousel.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Carousel</span></a></li>
+									<li><a href="base_dropdown.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Dropdowns</span></a></li>
+									<li><a href="base_grid.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Grid</span></a></li>
+									<li><a href="base_listgroup.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> List Group</span> </a></li>
+									<li><a href="base_modals.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Modals</span></a></li>
+									<li><a href="base_notifi.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Notifications</span></a></li>
+									<li><a href="base_offcanvas.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Offcanvas</span></a></li>
+									<li><a href="base_placeh.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Placeholders</span> </a></li>
+									<li><a href="base_pagination.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Pagination</span></a></li>
+									<li><a href="base_progress.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Progress</span></a></li>
+									<li><a href="base_spinners.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Spinners</span></a></li>
+									<li><a href="base_tabs.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Tabs</span> </a></li>
+									<li><a href="base_tooltips.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Tooltips</span></a></li>
+									<li><a href="base_typo.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Typography </span></a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#Forms-collapse" aria-expanded="false"><i
+									class="fa fa-file icon-before"></i><span class="btn">Forms</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="Forms-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="form_basic.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Basic Elements</span></a></li>
+									<li><a href="form_validation.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Validation</span></a></li>
+									<li><a href="form_wizard.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Wizard</span></a></li>
+									<li><a href="form.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i>Wordpress Form</span></a></li>
+									<li><a href="list.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i>Wordpress List</span></a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+
+							<a href="javascript:void(0);"
+								class="btn btn-toggle align-items-center rounded collapsed w-100 tag_m"
+								data-bs-toggle="collapse" data-bs-target="#table-collapse" aria-expanded="false"><i
+									class="fa fa-table icon-before"></i><span class="btn">Table</span><i
+									class="fa fa-chevron-right"></i></a>
+							<div class="collapse" id="table-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="table_basic.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Basic Table</span></a></li>
+									<li><a href="table_tow.html" class="link-dark rounded w-100"><span><i
+													style="font-size:8px; vertical-align:middle; margin-right:10px;"
+													class="fa fa-circle-o"></i> Tow Table</span></a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item">
+							<a href="chat.html"
+								class="btn btn-toggle align-items-center rounded w-100 tag_m  no_drop active_tab"><i
+									class="fa fa-comment-o icon-before"></i><span class="btn">Chat</span></a>
+						</li>
+
+						<li class="nav-item">
+							<a href="chart_chartjs.html"
+								class="btn btn-toggle align-items-center rounded w-100 tag_m  no_drop"><i
+									class="fa fa-bar-chart icon-before"></i><span class="btn">Charts</span></a>
+						</li>
+
+						<li class="nav-item">
+							<a href="email.html"
+								class="btn btn-toggle align-items-center rounded w-100 tag_m  no_drop"><i
+									class="fa fa-envelope icon-before"></i><span class="btn">Email</span></a>
+						</li>
+					</ul>
+
+
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+						<span>Saved reports</span>
+						<a class="link-secondary" href="#" aria-label="Add a new report">
+							<svg xmlns="#" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="feather feather-plus-circle" aria-hidden="true">
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="8" x2="12" y2="16"></line>
+								<line x1="8" y1="12" x2="16" y2="12"></line>
+							</svg>
+						</a>
+					</h6>
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link text-muted" href="#">
+								<svg xmlns="#" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" class="feather feather-layers" aria-hidden="true">
+									<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+									<polyline points="2 17 12 22 22 17"></polyline>
+									<polyline points="2 12 12 17 22 12"></polyline>
+								</svg>
+								Integrations
+							</a>
+						</li>
+					</ul>
+
+				</div>
+			</nav>
+
+			<main class="col-md-9 ms-sm-auto common col-lg-10 px-md-4">
+				<div class="chat_pgrt row">
+					<div class="col-md-12">
+						<h5 class="mb-3">Chat 1</h5>
+					</div>
+				</div>
+				<div class="row chat_pg p-2">
+					<div class="col-lg-4 col-md-12" style="padding-left:0;">
+						<div class="chat_pgl">
+							<a href="#">
+								<div class="chat_pgl1 row act_chat">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/1.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Eget Nulla <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Nulla sent 3 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1  mb-0 normal">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/7.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/8.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/9.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/11.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/34.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/1.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/7.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/8.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#">
+								<div class="chat_pgl1 row">
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/9.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-7 col-7">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Semp Porta <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Porta sent 7 photos</span></h6>
+										</div>
+									</div>
+									<div class="col-md-2 col-2">
+										<div class="chat_pgl1r text-center">
+											<h6 class="fonr_14 colo_1 normal mb-0">Tue</h6>
+											<span class="colo_1 gear"><i class="fa fa-gear"></i></span>
+											<span class="colo_2 check"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-12" style="padding-left:0;">
+						<div class="chat_pgr">
+							<div class="chat_pgr1 row" style="border-bottom:1px solid #ebf3ff;">
+								<div class="col-md-6 col-6">
+									<div class="chat_pgr1l">
+										<h6 class="mb-0">Semper Porta</h6>
+										<h6 class="text_12 colo_3 normal mt-1 mb-0">Active On Chat</h6>
+									</div>
+								</div>
+								<div class="col-md-6 col-6">
+									<div class="chat_pgr1r float-end" style="margin-right:15px;">
+										<ul class="mb-0">
+											<li style="margin-right:5px;" class="d-inline-block"><a class="colo_4"
+													href="#" data-bs-toggle="tooltip" data-bs-placement="left"
+													data-bs-original-title="Start a Call"><i
+														class="fa fa-phone"></i></a></li>
+											<li style="margin-right:5px;" class="d-inline-block"><a class="colo_4"
+													href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+													data-bs-original-title="Start a Video Call"><i
+														class="fa fa-video-camera"></i></a></li>
+											<li class="d-inline-block"><a class="colo_4" href="#"
+													data-bs-placement="bottom" data-bs-toggle="tooltip"
+													data-bs-original-title="Conversation Information"><i
+														class="fa fa-info"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<a href="#">
+								<div class="chat_pgl2 row"
+									style="border-bottom:1px solid #ebf3ff; padding-top:15px; padding-bottom:15px;">
+									<div class="col-md-1 col-2">
+										<div class="chat_pgl1l position-relative">
+											<div class="chat_pgl1li"><img style="border-radius:50%;" class="w-100"
+													alt="abc" src="img/11.jpg"></div>
+											<div class="chat_pgl1li1 position-absolute"><span><i
+														class="fa fa-circle"></i></span></div>
+										</div>
+									</div>
+									<div class="col-md-11 col-10">
+										<div class="chat_pgl1m">
+											<h6 class="mb-0 fonr_14">Eget Nulla <br> <span style="margin-top:5px;"
+													class="normal d-inline-block">Lorem Ipsum Is Simply Dummy Text Of
+													The Printing And Typesetting Industry. </span></h6>
+										</div>
+									</div>
+
+								</div>
+							</a>
+							<div class="chat_pgr2 row">
+								<div class="col-md-12">
+									<div class="chat_pgr2i mt-3 text-center">
+										<h6 class="text_12 colo_3 normal mt-1 mb-0">May 5, 2019, 11:54 am</h6>
+									</div>
+								</div>
+								<div class="chat_pgr2i1 mt-3 row">
+									<div class="col-md-1 col-2">
+										<div class="chat_pgr2i1l">
+											<img style="border-radius:50%;" class="w-100" alt="abc" src="img/34.jpg">
+										</div>
+									</div>
+									<div class="col-md-11 col-10">
+										<div class="chat_pgr2i1r">
+											<p style="background:#edf2f9; display:inline-block; width:80%; padding:15px; border-radius:3px;"
+												class="text_13 mb-0">Yes, in an organization stature, this is a must.
+												Besides, we need to quickly establish all other professional
+												appearances, e.g., having a website where members’ profile will be
+												displayed along with additional organizational information. Providing
+												services to existing members is more important than attracting new
+												members at this moment, in my opinion..</p>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:56 am</h6>
+										</div>
+									</div>
+								</div>
+								<div class="chat_pgr2i1 mt-3 row">
+									<div class="col-md-1 col-2">
+										<div class="chat_pgr2i1l">
+											<img style="border-radius:50%;" class="w-100" alt="abc" src="img/1.jpg">
+										</div>
+									</div>
+									<div class="col-md-11 col-10">
+										<div class="chat_pgr2i1r">
+											<p style="background:#edf2f9; display:inline-block; padding:15px; border-radius:3px;"
+												class="text_13 mb-0">What are you doing?</p>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:59 am</h6>
+										</div>
+									</div>
+								</div>
+								<div class="chat_pgr2i2 mt-3 row">
+									<div class="col-md-9 col-9">
+										<div class="chat_pgr2i2l">
+
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<p class="text_13 mb-1">I took this pick</p>
+											<a href="#"><img src="img/24.jpg" height="100" class="w-100" alt="abc"></a>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:59 am <i
+													class="fa fa-check colo_2"></i></h6>
+											<button type="submit" class="btn btn-primary mt-3 text_13">Nothing</button>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:59 am <i
+													class="fa fa-check colo_2"></i></h6>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="chat_pgr2 mt-3 row">
+								<div class="col-md-12">
+									<div class="chat_pgr2i mt-3 text-center">
+										<h6 class="text_12 colo_3 normal mt-1 mb-0">May 7, 2019, 11:54 am</h6>
+									</div>
+								</div>
+								<div class="chat_pgr2i1 mt-3 row">
+									<div class="col-md-1 col-2">
+										<div class="chat_pgr2i1l">
+											<img style="border-radius:50%;" class="w-100" alt="abc" src="img/1.jpg">
+										</div>
+									</div>
+									<div class="col-md-11 col-10">
+										<div class="chat_pgr2i1r">
+											<p style="background:#edf2f9; display:inline-block; padding:15px; border-radius:3px;"
+												class="text_13 mb-0">How are you?
+											</p>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:56 am</h6>
+										</div>
+									</div>
+								</div>
+
+								<div class="chat_pgr2i2 mt-3 row">
+									<div class="col-md-9 col-9">
+										<div class="chat_pgr2i2l">
+
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<button type="submit" class="btn btn-primary text_13">Fine</button>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:59 am <i
+													class="fa fa-check colo_2"></i></h6>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="chat_pgr2i mt-3 text-center">
+										<h6 class="text_12 colo_3 normal mt-1 mb-0">May 7, 2019, 11:54 am</h6>
+									</div>
+								</div>
+								<div class="chat_pgr2i2 mt-3 row">
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2l">
+
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/25.jpg" height="100" class="w-100" alt="abc"></a>
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/26.jpg" height="100" class="w-100" alt="abc"></a>
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/27.jpg" height="100" class="w-100" alt="abc"></a>
+										</div>
+									</div>
+
+								</div>
+								<div class="chat_pgr2i2 mt-3 row">
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2l">
+
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/28.jpg" height="100" class="w-100" alt="abc"></a>
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/29.jpg" height="100" class="w-100" alt="abc"></a>
+										</div>
+									</div>
+									<div class="col-md-3 col-3">
+										<div class="chat_pgr2i2r" style="text-align:right;">
+											<a href="#"><img src="img/30.jpg" height="100" class="w-100" alt="abc"></a>
+											<h6 class="text_12 colo_3 normal mt-2 mb-0">11:59 am <i
+													class="fa fa-check colo_2"></i></h6>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row chat_pg1 bg-white p-2 m-0" style="border:1px solid #ebf3ff;">
+					<div class="col-lg-4 col-md-12">
+						<div class="chat_pg1l">
+							<div class="input-group">
+								<span class="input-group-btn mt-2 p-1">
+									<button class="btn btn-primary" type="button">
+										<i class="fa fa-search" style="font-size: 18px;color: #6d7e99;"></i></button>
+								</span>
+								<input type="text" class="form-control" placeholder="Search Contacts">
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-12">
+						<div class="chat_pg1r">
+							<div class="chat_pg1ri row">
+								<div class="col-lg-10 col-md-8">
+									<div class="chat_pg1ril">
+										<input type="text" class="form-control" placeholder="Type Your Message">
+									</div>
+								</div>
+								<div class="col-lg-2 col-md-4">
+									<div class="chat_pg1rir" style="text-align:right;">
+										<ul class="mt-3">
+											<li style="margin-right:10px;" class="d-inline-block"><a class="colo_3"
+													href="#"><i class="fa fa-file-image-o"></i></a></li>
+											<li style="margin-right:10px;" class="d-inline-block"><a class="colo_3"
+													href="#"><i class="fa fa-smile-o"></i></a></li>
+											<li class="d-inline-block"><a class="colo_3" href="#">Send</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row chat_pg2 mt-5">
+					<div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+
+						<h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat 2</h5>
+
+						<div class="card">
+							<div class="card-body">
+
+								<ul class="list-unstyled mb-0">
+									<li class="p-2 border-bottom" style="background-color: #eee;">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/1.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Eget Nulla</p>
+													<p class="small text-muted">Hello, Are you there?</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">Just now</p>
+												<span style="background:#00d27a!important;"
+													class="badge bg-danger float-end">1</span>
+											</div>
+										</a>
+									</li>
+									<li class="p-2 border-bottom">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/7.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold colo_4 mb-0">Semp Porta</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">5 mins ago</p>
+											</div>
+										</a>
+									</li>
+									<li class="p-2 border-bottom">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/8.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Eget Nulla</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">Yesterday</p>
+											</div>
+										</a>
+									</li>
+									<li class="p-2 border-bottom">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/9.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Semp Porta</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">Yesterday</p>
+											</div>
+										</a>
+									</li>
+									<li class="p-2 border-bottom">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/11.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Eget Nulla</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">Yesterday</p>
+											</div>
+										</a>
+									</li>
+									<li class="p-2 border-bottom">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/34.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Semp Porta</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">Yesterday</p>
+											</div>
+										</a>
+									</li>
+									<li class="p-2">
+										<a href="#" class="d-flex justify-content-between">
+											<div class="d-flex flex-row">
+												<img src="img/1.jpg" alt="abc"
+													class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
+													width="60">
+												<div class="pt-1">
+													<p class="fw-bold mb-0 colo_4">Eget Nulla</p>
+													<p class="small text-muted">Lorem ipsum dolor sit.</p>
+												</div>
+											</div>
+											<div class="pt-1">
+												<p class="small text-muted mb-1">5 mins ago</p>
+												<span class="text-muted float-end"><i class="fa fa-check"
+														aria-hidden="true"></i></span>
+											</div>
+										</a>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-6 col-lg-7 col-xl-8">
+
+						<ul class="list-unstyled">
+							<li class="d-flex justify-content-between mb-4">
+								<img src="img/7.jpg" alt="abc"
+									class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+								<div class="card">
+									<div class="card-header d-flex justify-content-between p-3">
+										<p class="fw-bold mb-0 colo_4">Dapibus Diam</p>
+										<p class="text-muted small mb-0"><i style="margin-right:5px;"
+												class="fa fa-clock-o"></i> 10 mins ago</p>
+									</div>
+									<div class="card-body">
+										<p class="mb-0">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut
+											labore et dolore magna aliqua.
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="d-flex justify-content-between mb-4">
+								<div class="card w-100">
+									<div class="card-header d-flex justify-content-between p-3">
+										<p class="fw-bold mb-0 colo_4">Quis Nulla</p>
+										<p class="text-muted small mb-0"><i style="margin-right:5px;"
+												class="fa fa-clock-o"></i> 15 mins ago</p>
+									</div>
+									<div class="card-body">
+										<p class="mb-0">
+											Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+											doloremque
+											laudantium.
+										</p>
+									</div>
+								</div>
+								<img src="img/8.jpg" alt="abc"
+									class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+							</li>
+							<li class="d-flex justify-content-between mb-4">
+								<img src="img/9.jpg" alt="abc"
+									class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+								<div class="card">
+									<div class="card-header d-flex justify-content-between p-3">
+										<p class="fw-bold mb-0 colo_4">Duis Diam</p>
+										<p class="text-muted small mb-0"><i style="margin-right:5px;"
+												class="fa fa-clock-o"></i> 20 mins ago</p>
+									</div>
+									<div class="card-body">
+										<p class="mb-0">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut
+											labore et dolore magna aliqua.
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="bg-white mb-3">
+								<div class="form-outline">
+									<textarea class="form-control" placeholder="Message" id="textAreaExample2"
+										rows="4"></textarea>
+
+								</div>
+							</li>
+							<button type="button" class="btn btn-primary btn-rounded float-end text-white">Send</button>
+						</ul>
+
+					</div>
+				</div>
+
+
+				<div class="row footer mt-4" style="border-top:1px solid #ddd; padding-top:20px;">
+					<div class="col-md-8">
+						<div class="footer_1l">
+							<p class="mb-0 col_3">© 2013 Your Website Name. All Rights Reserved | Design by <a
+									class="col_1 font-weight-bold" href="http://www.templateonweb.com">TemplateOnWeb</a>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="footer_1r" style="text-align:right;">
+							<ul>
+								<li class="d-inline font_14"><a class="col_3" href="#">About </a></li>
+								<li class="d-inline font_14"><a class="col_3" href="#">Support </a></li>
+								<li class="d-inline font_14"><a class="col_3" href="#">Contact Us </a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+	<script src="js/global.js"></script>
+
+	<script>
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+			return new bootstrap.Tooltip(tooltipTriggerEl)
+		})
+	</script>
+
+
+</body>
+
+</html>

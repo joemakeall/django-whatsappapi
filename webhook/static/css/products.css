@@ -1,0 +1,104 @@
+/* Geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-container input,
+.filter-container select,
+.filter-container button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-container button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-container button:hover {
+    background-color: #45a049;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td img {
+    width: 50px;
+    height: auto;
+}
+
+.actions i {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Paginação */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.pagination button:hover {
+    background-color: #45a049;
+}
+
+.pagination #paginationNumbers {
+    display: flex;
+    align-items: center;
+}
+
+.pagination #paginationNumbers span {
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination #paginationNumbers span.active {
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+}

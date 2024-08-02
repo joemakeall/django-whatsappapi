@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+</head>
+
+<body>
+    <div class="chat_container">
+        <!-- Coluna de Contatos -->
+        <div class="contacts_column">
+            <h3>Contatos</h3>
+            <div class="contact_card">
+                <div class="contact_avatar">
+                    <img src="{% static 'img/10.png' %}" alt="Avatar 1">
+                    <div class="contact_status online"></div>
+                </div>
+                <div class="contact_info">
+                    <h4>Nome do Contato</h4>
+                    <div class="contact_details">
+                        <p class="last_message">Mensagem recebida</p>
+                        <span class="message_time">12:30</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Adicione mais cartões de contato conforme necessário -->
+        </div>
+
+        <!-- Coluna de Chat -->
+        <div class="chat_column">
+            <div class="chat_header">
+                <div class="chat_header_avatar">
+                    <img src="{% static 'img/10.png' %}" alt="Avatar 1">
+                </div>
+                <div class="chat_header_info">
+                    <h4>Nome do Contato</h4>
+                    <p>Status do Contato</p>
+                </div>
+            </div>
+            <div class="messages_area">
+                <!-- Mensagens -->
+                <div class="message received">
+                    <p>Mensagem recebida</p>
+                    <div class="message_info">
+                        <span>12:30</span>
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <div class="message sent">
+                    <p>Mensagem enviada</p>
+                    <div class="message_info">
+                        <span>12:31</span>
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                </div>
+                <!-- Adicione mais mensagens conforme necessário -->
+            </div>
+            <div class="chat_footer">
+                <div class="attachment_menu">
+                    <button class="attach_button">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="attachment_dropdown">
+                        <a href="#"><i class="fas fa-image"></i> Imagens</a>
+                        <a href="#"><i class="fas fa-file-alt"></i> Documentos</a>
+                        <a href="#"><i class="fas fa-address-book"></i> Contatos</a>
+                    </div>
+                </div>
+                <div class="emoji_menu">
+                    <button class="emoji_button">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                    <div class="emoji_dropdown">
+                        <span>😊</span>
+                        <span>😂</span>
+                        <span>❤️</span>
+                        <span>👍</span>
+                        <span>🙌</span>
+                    </div>
+                </div>
+                <input type="text" class="message_input" placeholder="Digite sua mensagem">
+                <button class="send_button">Enviar</button>
+            </div>
+        </div>
+
+        <!-- Coluna de Informações (Opcional) -->
+        <div class="info_column">
+            <!-- Informações adicionais podem ser colocadas aqui -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const attachButton = document.querySelector('.attach_button');
+            const attachDropdown = document.querySelector('.attachment_dropdown');
+            const emojiButton = document.querySelector('.emoji_button');
+            const emojiDropdown = document.querySelector('.emoji_dropdown');
+            const sendMessageButton = document.querySelector('.send_button');
+            const messageInput = document.querySelector('.message_input');
+            const messagesArea = document.querySelector('.messages_area');
+    
+            // Alternar a visibilidade do menu de anexos
+            attachButton.addEventListener('click', function () {
+                const isAttachedVisible = attachDropdown.style.display === 'block';
+                attachDropdown.style.display = isAttachedVisible ? 'none' : 'block';
+                attachButton.classList.toggle('rotated');
+            });
+    
+            // Alternar a visibilidade do menu de emojis
+            emojiButton.addEventListener('click', function (event) {
+                event.stopPropagation(); // Impede que o clique no emojiButton feche o menu
+                const isEmojiVisible = emojiDropdown.style.display === 'block';
+                emojiDropdown.style.display = isEmojiVisible ? 'none' : 'block';
+            });
+    
+            // Fechar o menu de anexos e emojis ao clicar fora deles
+            document.addEventListener('click', function (event) {
+                if (!attachButton.contains(event.target) && !attachDropdown.contains(event.target)) {
+                    attachDropdown.style.display = 'none';
+                    attachButton.classList.remove('rotated');
+                }
+                if (!emojiButton.contains(event.target) && !emojiDropdown.contains(event.target)) {
+                    emojiDropdown.style.display = 'none';
+                }
+            });
+    
+            // Função para enviar uma mensagem
+            function sendMessage(message, type = 'sent') {
+                if (!message) return; // Não envia mensagens vazias
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', type);
+                messageElement.innerHTML = `
+                    <p>${message}</p>
+                    <div class="message_info">
+                        <span>${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <i class="${type === 'sent' ? 'fas fa-check-double' : 'fas fa-check'}"></i>
+                    </div>
+                `;
+                messagesArea.appendChild(messageElement);
+                messagesArea.scrollTop = messagesArea.scrollHeight; // Rolagem automática
+            }
+    
+            // Enviar mensagem ao clicar no botão
+            sendMessageButton.addEventListener('click', function () {
+                const messageText = messageInput.value.trim();
+                if (messageText) {
+                    sendMessage(messageText, 'sent');
+                    messageInput.value = '';
+    
+                    // Simular resposta automática
+                    setTimeout(() => {
+                        sendMessage('Resposta automática.', 'received');
+                    }, 1000); // Tempo para simular a resposta
+                }
+            });
+    
+            // Adicionar emojis ao clicar
+            emojiDropdown.addEventListener('click', function (event) {
+                if (event.target.tagName === 'SPAN') {
+                    messageInput.value += event.target.textContent;
+                    emojiDropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>    
+</body>
+
+</html>

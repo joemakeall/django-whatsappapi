@@ -1,334 +1,244 @@
-/* Estilos gerais */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-size: .875rem;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-}
+/*
+ * Sidebar
+ */
 
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    height: 40px; /* Ajuste a altura conforme necessário */
-    margin-right: 20px;
-}
-
-.banner {
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel img {
-    width: 100%;
-    height: 100%;
-}
-
-.carousel {
-    display: flex;
-    animation: slide 10s infinite;
-}
-
-@keyframes slide {
-    0% { transform: translateX(0%); }
-    33% { transform: translateX(-100%); }
-    66% { transform: translateX(-200%); }
-    100% { transform: translateX(0%); }
-}
-
-.content {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.content .card {
-    width: 30%;
-    text-align: center;
-}
-
-.content .card img {
-    width: 100%;
-    height: auto;
-}
-
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.whatsapp-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.whatsapp-icon img {
-    width: 50px;
-    height: 50px;
-}
-
-/* Estilos específicos para a página de login */
-
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-}
-
-.login-box {
-    width: 300px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.login-box h2 {
-    margin-bottom: 20px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.input-group input {
-    width: calc(100% - 22px); /* Ajuste de largura para incluir padding */
-    padding: 10px;
-    margin-right: 10px; /* Adiciona margem à direita */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.input-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.input-group button:hover {
-    background-color: #555;
-}
-
-.input-group p {
-    margin-top: 10px;
-}
-
-.input-group p a {
-    color: #333;
-    text-decoration: none;
-}
-
-.input-group p a:hover {
-    text-decoration: underline;
-}
-
-/* Estilos específicos para a página de cadastro */
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #f4f4f4;
-    padding: 20px; /* Adiciona padding superior */
-}
-
-.register-box {
-    width: 80%; /* Ajuste a largura conforme necessário */
-    padding-left: 20px; /* Ajuste padding direito */
-    padding-right: 20px; /* Ajuste padding direito */
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: left;
-    margin-top: 10px; /* Adiciona margem superior */
-    margin-right: 10px; /* Adiciona margem à direita */
-}
-
-.register-box h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.register-box .form-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.register-box .input-group {
-    margin-bottom: 15px;
-    flex: 0 0 48%;
-}
-
-.register-box .input-group input[type="file"] {
-    padding: 3px;
-}
-
-.register-box .input-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.register-box .input-group button:hover {
-    background-color: #555;
-}
-
-.register-box .input-group p {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.register-box .input-group p a {
-    color: #333;
-    text-decoration: none;
-}
-
-.register-box .input-group p a:hover {
-    text-decoration: underline;
-}
-
-.input-group.inline {
-    align-items: center;
-    white-space: nowrap;
-    text-align: center;
-}
-
-.input-group.inline input[type="checkbox"] {
-    margin-right: 10px; /* Ajuste conforme necessário */
-    float: right;
-}
-
-.input-group select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 305px;
-}
-
-/* Menu lateral */
 .sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    background-color: #333;
-    color: white;
-    transition: 0.3s;
-    padding-top: 60px;
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100;
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
 }
 
-.sidebar-header h3 {
-    margin: 0;
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
 }
 
-.sidebar-header .close-btn {
-    font-size: 36px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
 }
 
-.sidebar-menu {
-    list-style: none;
-    padding: 0;
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
 }
 
-.sidebar-menu li {
-    padding: 10px 15px;
+.sidebar .nav-link.active {
+  color: #2470dc;
 }
 
-.sidebar-menu li a {
-    color: white;
-    text-decoration: none;
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
 }
 
-.sidebar-menu li a:hover {
-    background-color: #575757;
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 
-.open-btn {
-    font-size: 24px; /* Diminuir o tamanho da fonte */
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    padding: 10px;
-    position: fixed; /* Para fixar no canto superior esquerdo */
-    top: 10px; /* Ajustar a posição */
-    left: 10px; /* Ajustar a posição */
-    z-index: 1000; /* Certificar que o botão fica acima de outros elementos */
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  /*padding-top: .75rem;
+  padding-bottom: .75rem;*/
+  font-size: 1rem;
 }
 
-.content {
-    margin-left: 0;
-    transition: margin-left 0.3s;
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
 }
 
-/* Active state for the sidebar */
-.sidebar.active {
-    left: 0;
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
 }
 
-.content.active {
-    margin-left: 250px;
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
 
 
+/*********** Extra **************/
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/********** Left Menu Toggle Css **************/
+.dropdown-toggle {
+  outline: 0;
+}
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+/*
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content:"\f054";
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]:: before {
+  transform: rotate(90deg);
+}
+*/
+.btn-toggle span {
+  transition: all 0.5s;
+}
+
+.btn-toggle:hover span {
+  transform: translateX(10px);
+}
+
+.btn-toggle-nav li a span {
+  transition: all 0.5s;
+}
+
+.btn-toggle-nav li a:hover span {
+  transform: translateX(10px);
+}
+
+.btn-toggle .icon-before {
+  padding-left: 10px;
+}
+
+.btn-toggle .fa-chevron-right {
+  position: absolute;
+  right: 10px;
+  transition: transform .35s ease;
+
+}
+
+.btn-toggle[aria-expanded="true"] .fa-chevron-right {
+  transform: rotate(90deg);
+  transition: transform .35s ease;
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.lh-tight {
+  line-height: 1.25;
+}
+
+
+/**********scrollbar styles  **************/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e4f7ff;
+  -webkit-box-shadow: inset 0 0 6px #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*****************************/

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Web Clone</title>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-pic"></div>
+                <input type="text" placeholder="Pesquisar ou começar nova conversa" class="search-bar">
+            </div>
+            <div class="contact-list">
+                <div class="contact">
+                    <div class="contact-pic"></div>
+                    <div class="contact-info">
+                        <span class="contact-name">Contato 1</span>
+                        <span class="last-message">Última mensagem...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="contact-pic"></div>
+                <div class="contact-info">
+                    <span class="contact-name">Contato 1</span>
+                </div>
+            </div>
+            <div class="chat-body">
+                <!-- Mensagens vão aqui -->
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Digite uma mensagem" class="message-input">
+                <button class="send-button">Enviar</button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script>
+        document.querySelector('.send-button').addEventListener('click', () => {
+            const messageInput = document.querySelector('.message-input');
+            const messageText = messageInput.value.trim();
+            
+            if (messageText) {
+                const message = document.createElement('div');
+                message.className = 'message sent';
+                message.textContent = messageText;
+                
+                document.querySelector('.chat-body').appendChild(message);
+                messageInput.value = '';
+
+                // Envia a mensagem para o servidor Django
+                fetch('/send_message/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                    body: JSON.stringify({ message: messageText })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const response = document.createElement('div');
+                    response.className = 'message received';
+                    response.textContent = data.message;
+                    
+                    document.querySelector('.chat-body').appendChild(response);
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar a mensagem:', error);
+                });
+            }
+        });
+
+        // Função para obter o token CSRF
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>

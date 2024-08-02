@@ -1,0 +1,397 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+
+.chat_container {
+    display: flex;
+    width: 100%;
+}
+
+.contacts_column {
+    width: 25%;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.contacts_column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact_card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.contact_card:hover {
+    background-color: #f1f1f1;
+}
+
+.contact_avatar {
+    position: relative;
+    margin-right: 10px;
+}
+
+.contact_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.contact_status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.contact_status.online {
+    background-color: #28a745;
+}
+
+.contact_info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contact_info h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.contact_details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.last_message {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.message_time {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.chat_column {
+    width: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.chat_header_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat_header_info h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.chat_header_info p {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.messages_area {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.message.received {
+    background-color: #e9ecef;
+    margin-right: auto;
+}
+
+.message.sent {
+    background-color: #007bff;
+    color: #fff;
+    margin-left: auto;
+}
+
+.message_info {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+}
+
+.message_info span {
+    margin-right: 5px;
+}
+
+.message_info i {
+    font-size: 12px;
+}
+
+.message_info i.fa-check-double {
+    color: #007bff;
+}
+
+.message_info i.fa-check {
+    color: #6c757d;
+}
+
+.chat_footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.attachment_menu {
+    position: relative;
+    margin-right: 10px;
+}
+
+.attach_button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.attach_button.rotated {
+    transform: rotate(45deg);
+}
+
+.attachment_dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    width: 150px;
+}
+
+.attachment_dropdown a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.attachment_dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.emoji_menu {
+    position: relative;
+    margin-right: 10px;
+}
+
+.emoji_button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.emoji_dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.emoji_dropdown span {
+    font-size: 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.message_input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.send_button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.send_button:hover {
+    background-color: #0056b3;
+}
+
+.show {
+    display: none;
+}
+
+.attachment_dropdown,
+.emoji_dropdown {
+    display: none;
+}
+
+.rotated {
+    transform: rotate(45deg); /* Altere conforme necessário para o efeito desejado */
+}
+
+/* Adicione ou atualize o CSS conforme abaixo */
+
+.attachment_dropdown, .emoji_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.attachment_dropdown a, .emoji_dropdown span {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.attachment_dropdown a:hover, .emoji_dropdown span:hover {
+    background-color: #f1f1f1;
+}
+
+.emoji_dropdown {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.emoji_dropdown span {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.message_input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.send_button {
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send_button:hover {
+    background-color: #005bb5;
+}
+
+.emoji_button, .attach_button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.attach_button.rotated {
+    transform: rotate(45deg);
+}
+
+.messages_area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message.received {
+    background-color: #e5e5ea;
+    align-self: flex-start;
+}
+
+.message.sent {
+    background-color: #007aff;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.message_info {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+}

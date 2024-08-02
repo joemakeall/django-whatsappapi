@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/products/" class="back-link">Voltar à lista</a>
+        </nav>
+    </header>
+    <main style="width: 90%; margin: auto;">
+        <div class="product-detail">
+            <div class="product-left">
+                <div class="product-image-card">
+                    {% if produto.imagem %}
+                        <img src="{{ produto.imagem }}" alt="{{ produto.descricao }}" class="main-image">
+                    {% else %}
+                        <div class="default-image">Imagem não disponível</div>
+                    {% endif %}
+                </div>
+                <div class="product-carousel">
+                    <div class="carousel">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_1.jpg" alt="Imagem do produto 1" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_2.jpg" alt="Imagem do produto 2" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_3.jpg" alt="Imagem do produto 3" class="carousel-image">
+                    </div>
+                </div>
+            </div>
+            <div class="product-right">
+                <h1>{{ produto.descricao }}</h1>
+                <div class="product-rating">
+                    <span class="rating-stars">
+                        {% for i in "12345" %}
+                            <i class="fa fa-star {% if i|add:"0" <= produto.average_rating %}selected{% endif %}" data-value="{{ i }}"></i>
+                        {% endfor %}
+                    </span>
+                    <span class="reviews">{{ produto.total_reviews }} Reviews</span>
+                    <a href="#add-review" class="review-link">Faça uma avaliação</a>
+                </div>
+                <p><strong>Preço:</strong> {{ produto.preco|default:"R$ 0,00" }}</p>
+                <p><strong>Código:</strong> {{ produto.codigo|default:"12345" }}</p>
+                <p><strong>EAN:</strong> {{ produto.ean|default:"0000000000000" }}</p>
+                <p><strong>Em Estoque:</strong> {{ produto.estoque|default:"0" }}</p>
+                <div class="quantity">
+                    <button class="btn btn-decrement">-</button>
+                    <input type="number" value="1" class="quantity-input" readonly>
+                    <button class="btn btn-increment">+</button>
+                </div>
+                <button class="btn btn-primary">Adicionar ao Carrinho</button>
+                <div class="product-description">
+                    <p><strong>Descrição:</strong> {{ produto.descricao_completa|default:"Descrição do produto não disponível." }}</p>
+                </div>
+                <div class="product-tags">
+                    <strong>Tags:</strong> {{ produto.tags|default:"exemplo, tags" }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <ul class="tabs">
+                <li class="tab-item active" data-tab="reviews">Avaliações</li>
+                <li class="tab-item" data-tab="info">Informações Adicionais</li>
+            </ul>
+            <div class="tab-content">
+                <div id="reviews" class="tab-pane active">
+                    {% if reviews %}
+                        {% for review in reviews %}
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-author">
+                                        {% if review.author %}
+                                            {{ review.author.username }}
+                                        {% else %}
+                                            Anônimo
+                                        {% endif %}
+                                    </span>
+                                    <span class="review-rating">
+                                        {% for i in "12345" %}
+                                            <i class="fa fa-star {% if i|add:"0" <= review.rating %}selected{% endif %}"></i>
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                <p>{{ review.comment }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Sem avaliações ainda.</p>
+                    {% endif %}
+                </div>
+                <div id="info" class="tab-pane">
+                    <p><strong>Marca:</strong> {{ produto.brand|default:"Marca não disponível" }}</p>
+                    <p><strong>Dimensões:</strong> {{ produto.dimensions|default:"Dimensões não disponíveis" }}</p>
+                    <p><strong>Peso:</strong> {{ produto.weight|default:"Peso não disponível" }}</p>
+                </div>
+            </div>           
+        </div>
+        
+        <!-- Formulário de avaliação -->
+        <div id="add-review">
+            <h2>Adicionar Avaliação</h2>
+            <form method="post" action="{% url 'add_review' produto.id %}">
+                {% csrf_token %}
+                <div class="rating">
+                    {% for i in "12345" %}
+                        <i class="fa fa-star" data-value="{{ i }}"></i>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="rating" id="rating-value">
+                <textarea name="comment" rows="4" placeholder="Digite sua avaliação aqui..."></textarea>
+                <button type="submit" class="btn btn-primary">Enviar Avaliação</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>Footer content</p>
+    </footer>
+    <script src="{% static 'js/product.js' %}"></script>
+</body>
+</html>

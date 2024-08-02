@@ -1,0 +1,496 @@
+/* Reseta margens e paddings para todos os elementos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Define o layout básico do body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilo para o cabeçalho */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Estilo para a barra superior */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+/* Container para os logos */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px;
+}
+
+/* Estiliza os logos */
+.logo {
+    height: 30px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Estilo para os ícones da barra superior */
+.top-icons {
+    display: flex;
+    gap: 30px;
+}
+
+.icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+    z-index: 100;
+}
+
+.icon.profile:hover .profile-menu {
+    display: block;
+}
+
+/* Estilo para o menu principal */
+.main-menu {
+    background-color: #444;
+    color: white;
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.main-menu ul li {
+    position: relative;
+}
+
+.main-menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-menu ul li:hover>ul {
+    display: block;
+}
+
+.main-menu ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #555;
+    padding: 10px;
+    list-style: none;
+    top: 100%;
+    left: 0;
+}
+
+.main-menu ul li ul li {
+    padding: 5px 0;
+}
+
+/* Estilo para a barra lateral */
+.sidebar {
+    width: 60px;
+    background-color: #222;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 900;
+    padding-top: 100px;
+}
+
+.sidebar.active {
+    width: 200px;
+}
+
+.sidebar-content {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.sidebar-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-content ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sidebar-content ul li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
+
+.sidebar-content ul li a span {
+    margin-left: 10px;
+    display: none;
+}
+
+.sidebar.active .sidebar-content ul li a span {
+    display: inline;
+}
+
+.sidebar-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #10d347;
+    color: white;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: -10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.sidebar-toggle i {
+    font-size: 10px;
+}
+
+/* Estilo para o conteúdo principal */
+main {
+    margin-left: 60px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.sidebar.active~main {
+    margin-left: 200px;
+}
+
+/* Estilo para as linhas e colunas dos cards */
+.row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.row:not(:first-child) {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.column {
+    flex: 1 1 calc(33.333% - 20px);
+}
+
+.column-1 {
+    flex: 1 1 calc(100% - 20px);
+}
+
+.column-2 {
+    flex: 1 1 calc(50% - 20px);
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+/* Menu supenso do card */
+.dropdown-toggle {
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #e4e2e2;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-menu {
+    display: none;
+    list-style-type: none;
+    /* Remove os pontos das listas */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-menu a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropdown-toggle {
+    background-color: #bbbbbb;
+}
+
+/* Estilo para os cards */
+.card {
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.card-body {
+    padding: 0; /* Remover padding para que a imagem preencha todo o espaço */
+}
+
+/* Garantir que o menu não fique colado ao título do card */
+.card-header {
+    display: flex;
+    align-items: center;
+    background: #e4e2e2;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+/* Estilo para a imagem do card */
+.card-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 5px;
+
+}
+
+.card-image-2 {
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+
+.card:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* Estilo para o título do card */
+.card-title {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Valor do card */
+.card .card-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Estilo para a tabela do card */
+.card-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.card-table th,
+.card-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.card-table td {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Adicione uma cor para a borda da tabela */
+.card-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Ícone do card */
+.card .card-icon {
+    font-size: 32px;
+    color: #555;
+}
+
+/* Estilo para os números */
+.card .card-value span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Porcentagem do card */
+.card .percentage {
+    color: green;
+}
+
+.card .percentage-down {
+    color: red;
+}
+
+/* Textos com cores */
+.card .card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    color: #777;
+}
+
+.card-info .percentage {
+    color: #4caf50;
+}
+
+.card-info .percentage-down {
+    color: #f44336;
+}
+
+/* Ícones de seta */
+.card-info .fa-arrow-up {
+    color: #4caf50;
+}
+
+.card-info .fa-arrow-down {
+    color: #f44336;
+}
+
+/* Estilos específicos para as cores dos ícones */
+.analytic-card .card-icon {
+    color: #10d347;
+}
+
+.sales-card .card-icon {
+    color: #007bff;
+}
+
+.orders-card .card-icon {
+    color: #17a2b8;
+}
+
+/* Custom scrollbar */
+.sidebar-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: #222;
+}
+
+/* Card para o gráfico */
+.chart {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px;
+    }
+
+    .sidebar.active {
+        width: 150px;
+    }
+
+    main {
+        margin-left: 50px;
+    }
+
+    .row {
+        flex-direction: column;
+        margin: 50px;
+    }
+
+    .column,
+    .column-2 {
+        flex: 1 1 100%;
+    }
+}
