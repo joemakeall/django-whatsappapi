@@ -1,6 +1,9 @@
+{% extends 'dashboard_a.html' %}
+{% block content %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,41 +12,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{% static 'js/products.js' %}" defer></script>
 </head>
+
 <body>
-    <div class="filter-container">
-        <input type="text" id="nameFilter" placeholder="Filtrar pelo nome do produto">
-        <select id="statusFilter">
-            <option value="all">Todos os Status</option>
-            <option value="active">Ativo</option>
-            <option value="inactive">Inativo</option>
-        </select>
-        <button id="filterButton">Filtrar</button>
-    </div>
-
-    <table id="productTable">
-        <thead>
-            <tr>
-                <th><input type="checkbox" id="selectAll"></th>
-                <th>Imagem</th>
-                <th>Código</th>
-                <th>Descrição</th>
-                <th>Grupo</th>
-                <th>EAN</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows will be dynamically inserted here -->
-        </tbody>
-    </table>
-
-    <div class="pagination">
-        <button id="prevPage">&laquo; Primeiro</button>
-        <button id="prev">&lsaquo; Anterior</button>
-        <div id="paginationNumbers"></div>
-        <button id="next">&rsaquo; Próximo</button>
-        <button id="nextPage">Último &raquo;</button>
-    </div>
+    <main class="products">
+        <div class="filter-container products">
+            <input type="text" id="nameFilter" placeholder="Filtrar pelo nome do produto">
+            <select id="statusFilter">
+                <option value="all">Todos os Status</option>
+                <option value="active">Ativo</option>
+                <option value="inactive">Inativo</option>
+            </select>
+            <button id="filterButton">Filtrar</button>
+        </div>
+    
+        <table id="productTable" class="products">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>Imagem</th>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Grupo</th>
+                    <th>EAN</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically inserted here -->
+            </tbody>
+        </table>
+    
+        <div class="pagination products">
+            <button id="prevPage">&laquo; Primeiro</button>
+            <button id="prev">&lsaquo; Anterior</button>
+            <div id="paginationNumbers"></div>
+            <button id="next">&rsaquo; Próximo</button>
+            <button id="nextPage">Último &raquo;</button>
+        </div>
+    </main>
 </body>
 </html>
+{% endblock %}

@@ -1,0 +1,84 @@
+/* Estilos gerais */
+main.companies {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tabela */
+table.companies {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+table.companies th,
+table.companies td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table.companies th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table.companies tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table.companies tr:hover {
+    background-color: #ddd;
+}
+
+table.companies td img {
+    width: 50px;
+    height: auto;
+}
+
+/* Ícones de ações */
+.actions.companies i {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Paginação */
+.pagination.companies {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination.companies button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.pagination.companies button:hover {
+    background-color: #45a049;
+}
+
+.pagination.companies #paginationNumbers {
+    display: flex;
+    align-items: center;
+}
+
+.pagination.companies #paginationNumbers span {
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination.companies #paginationNumbers span.active {
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+}

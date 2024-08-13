@@ -1,71 +1,80 @@
 /* Geral */
-body {
+body.products {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
 
-.filter-container {
+main.products {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-container.products {
     margin-bottom: 20px;
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.filter-container input,
-.filter-container select,
-.filter-container button {
+.filter-container.products input,
+.filter-container.products select,
+.filter-container.products button {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-.filter-container button {
+.filter-container.products button {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
 }
 
-.filter-container button:hover {
+.filter-container.products button:hover {
     background-color: #45a049;
 }
 
 /* Tabela */
-table {
+table.products {
     width: 100%;
     border-collapse: collapse;
+    font-size: 11px;
 }
 
-th, td {
+table.products th,
+table.products td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-th {
+table.products th {
     background-color: #4CAF50;
     color: white;
 }
 
-tr:nth-child(even) {
+table.products tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+table.products tr:hover {
     background-color: #ddd;
 }
 
-td img {
+table.products td img {
     width: 50px;
     height: auto;
 }
 
-.actions i {
+.actions.products i {
     cursor: pointer;
     margin-right: 5px;
 }
 
 /* Paginação */
-.pagination {
+.pagination.products {
     margin-top: 20px;
     text-align: center;
     display: flex;
@@ -73,7 +82,7 @@ td img {
     align-items: center;
 }
 
-.pagination button {
+.pagination.products button {
     border: none;
     background-color: #4CAF50;
     color: white;
@@ -82,22 +91,22 @@ td img {
     margin: 0 5px;
 }
 
-.pagination button:hover {
+.pagination.products button:hover {
     background-color: #45a049;
 }
 
-.pagination #paginationNumbers {
+.pagination.products #paginationNumbers {
     display: flex;
     align-items: center;
 }
 
-.pagination #paginationNumbers span {
+.pagination.products #paginationNumbers span {
     padding: 10px;
     margin: 0 5px;
     cursor: pointer;
 }
 
-.pagination #paginationNumbers span.active {
+.pagination.products #paginationNumbers span.active {
     font-weight: bold;
     background-color: #4CAF50;
     color: white;

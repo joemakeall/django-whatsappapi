@@ -2,12 +2,13 @@ import os
 import json
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.utils import timezone
 from .models import Messages, Company, Products, Reviews
+from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
@@ -41,7 +42,7 @@ def login(request):
     return render(request, 'login.html')
 
 def dashboard(request):
-    return render(request, 'dashboard_n.html')
+    return render(request, 'dashboard.html')
 
 def dashboard_a(request):
     return render(request, 'dashboard_a.html')
@@ -215,9 +216,65 @@ def get_reviews(request, product_id):
         return JsonResponse({'success': False, 'message': 'Produto não encontrado'})
     
 def companies(request):
-    companies = Company.objects.all()
-    return render(request, 'companies.html', {'companies': companies})
+    # Obter filtros e número da página da requisição
+    name_filter = request.GET.get('name', '')
+    page_number = int(request.GET.get('page', 1))
 
-def company_detail(request, id):
-    company = get_object_or_404(Company, id=id)
-    return render(request, 'company_detail.html', {'company': company})
+    # Consultar as empresas, aplicando filtro se necessário
+    queryset = Company.objects.all()
+    if name_filter:
+        queryset = queryset.filter(company_name__icontains=name_filter)
+
+    # Configurar a paginação
+    paginator = Paginator(queryset, 10)
+    page = paginator.get_page(page_number)
+
+    # Preparar dados das empresas para o contexto
+    companies = []
+    for company in page.object_list:
+        company_data = {
+            'id': company.id,
+            'company_name': company.company_name,
+            'cnpj': company.cnpj,
+            'address': company.address,
+            'phone': company.phone,
+            'email': company.email,
+            'logo': company.logo.url if company.logo and hasattr(company.logo, 'url') else '/static/img/placeholder.png'
+        }
+        companies.append(company_data)
+
+    # Gerar lista de números de páginas para a paginação
+    page_range = list(paginator.page_range)
+
+    # Contexto para o template
+    context = {
+        'companies': companies,
+        'totalPages': paginator.num_pages,
+        'currentPage': page_number,
+        'page_range': page_range,
+        'name_filter': name_filter
+    }
+
+    # Renderizar a página HTML com o contexto
+    return render(request, 'companies.html', context)
+
+def company(request, id):
+    company = get_object_or_404(Company, pk=id)
+    context = {
+        'company': {
+            'logo': company.logo.url if company.logo and hasattr(company.logo, 'url') else '/static/img/placeholder.png',
+            'company_name': company.company_name,
+            'trade_name': company.trade_name,
+            'cnpj': company.cnpj,
+            'email': company.email,
+            'phone': company.phone,
+            'cell_phone': company.cell_phone,
+            'address': company.address,
+            'number': company.number,
+            'neighborhood': company.neighborhood,
+            'complement': company.complement,
+            'city': company.city,
+            'state': company.state,
+        }
+    }
+    return render(request, 'company.html', context)

@@ -1,67 +1,79 @@
+{% extends 'dashboard_a.html' %}
+{% block content %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Empresas</title>
-    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .edit-icon {
-            cursor: pointer;
-            color: blue;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/companies.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <div class="content">
-        <div class="container">
-            <h1>Lista de Empresas</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Razão Social</th>
-                        <th>Nome Fantasia</th>
-                        <th>Email</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for company in companies %}
-                    <tr>
-                        <td>{{ company.company_name }}</td>
-                        <td>{{ company.trade_name }}</td>
-                        <td>{{ company.email }}</td>
-                        <td>
-                            <a href="{% url 'company_detail' company.id %}">
-                                <span class="edit-icon">✏️</span>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <main class="companies">
+        <div class="filter-container companies">
+            <form method="get" action="{% url 'companies' %}">
+                <input type="text" id="nameFilter" name="name" placeholder="Filtrar pelo nome da empresa" value="{{ name_filter }}">
+                <button id="filterButton">Filtrar</button>
+            </form>
         </div>
-    </div>
-    <script src="{% static 'js/dashboard.js' %}"></script>
+
+        <table id="companyTable" class="companies">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>Logo</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies %}
+                <tr>
+                    <td><input type="checkbox" class="company-checkbox" value="{{ company.id }}"></td>
+                    <td><img src="{{ company.logo }}" alt="Logo" onerror="this.onerror=null;this.src='{% static 'img/placeholder.png' %}'" class="logo-img"></td>
+                    <td>{{ company.company_name }}</td>
+                    <td>{{ company.cnpj }}</td>
+                    <td>{{ company.address }}</td>
+                    <td>{{ company.phone }}</td>
+                    <td>{{ company.email }}</td>
+                    <td>
+                        <a href="{% url 'company' company.id %}">Detalhes</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">Nenhuma empresa encontrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination companies">
+            {% if currentPage > 1 %}
+            <a href="?page=1{% if name_filter %}&name={{ name_filter }}{% endif %}">&laquo; Primeiro</a>
+            <a href="?page={{ currentPage|add:-1 }}{% if name_filter %}&name={{ name_filter }}{% endif %}">&lsaquo; Anterior</a>
+            {% endif %}
+
+            {% for num in page_range %}
+            <a href="?page={{ num }}{% if name_filter %}&name={{ name_filter }}{% endif %}" class="{% if num == currentPage %}active{% endif %}">{{ num }}</a>
+            {% endfor %}
+
+            {% if currentPage < totalPages %}
+            <a href="?page={{ currentPage|add:1 }}{% if name_filter %}&name={{ name_filter }}{% endif %}">&rsaquo; Próximo</a>
+            <a href="?page={{ totalPages }}{% if name_filter %}&name={{ name_filter }}{% endif %}">Último &raquo;</a>
+            {% endif %}
+        </div>
+    </main>
+    <script src="{% static 'js/companies.js' %}" defer></script>
 </body>
 
 </html>
+{% endblock %}
