@@ -1,0 +1,80 @@
+{% extends 'dashboard_a.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="{% static 'css/products_list_detail.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <main class="products-container">
+        {% for product in products %}
+        <div class="row prod_n1">
+            <div class="prod_n1l">
+                <a href="/product/{{ product.codigo }}/">
+                    <div class="prod_n1li">
+                        {% if product.imagem %}
+                            <img src="{{ product.imagem }}" alt="{{ product.descricao }}" onerror="this.onerror=null;this.src='https://b2b.hb.com.br/assets/images/produtos/notfound.png';">
+                        {% else %}
+                            <div class="no-image">Imagem não disponível</div>
+                        {% endif %}
+                    </div>
+                </a>
+                {% if product.novo %}
+                    <div class="prod_n1li1">New</div>
+                {% endif %}
+            </div>            
+
+            <div class="prod_n1m">
+                <p class="product-description">
+                    <a class="bold colo_6" href="#">{{ product.descricao }}</a>
+                </p>
+                <h4><a href="#">Computer & Accessories</a></h4>
+                <ul class="product-attributes">
+                    <li>32GB RAM</li>
+                    <li>2TB SSD Hard Drive</li>
+                    <li>12-core Intel Xeon</li>
+                    <li>Mac OS</li>
+                    <li>Secured</li>
+                </ul>
+            </div>
+
+            <div class="prod_n1r">
+                <h4>R$ {{ product.preco_desconto|floatformat:2 }}<br>
+                    <span class="text_13 colo_1">R$ {{ product.preco_original|floatformat:2 }} - {{ product.desconto
+                        }}%</span>
+                </h4>
+                <h5>
+                    <span class="rating-stars">
+                        {% for i in "12345" %}
+                            {% if i|add:"0" <= product.average_rating %}
+                                <i class="fa fa-star colo_5" aria-hidden="true"></i>
+                            {% elif i|add:"0" == product.average_rating|floatformat:1 %}
+                                <i class="fa fa-star-half-o colo_5" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="fa fa-star-o colo_7" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </span>
+                    <span class="reviews">{{ product.total_reviews }} Reviews</span>
+                </h5>
+                                
+                <h6><span class="normal">Custo de Envio:</span> R$ {{ product.frete|floatformat:2 }}</h6>
+                <h6><span class="normal">Estoque:</span> <span class="colo_2">0</span></h6>
+                <h6><a class="button_new_1" href="#"><i class="fa fa-heart-o"></i> Favoritar</a></h6>
+                <h6><a class="button_new_2" href="#"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a></h6>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+</body>
+
+</html>
+{% endblock %}

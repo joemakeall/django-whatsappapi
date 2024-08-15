@@ -2,14 +2,14 @@ import os
 import json
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.utils import timezone
 from .models import Messages, Company, Products, Reviews
 from django.core.paginator import Paginator
-from django.contrib.auth.models import User
+from .forms import AlterCompanyForm
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
 GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
@@ -55,6 +55,13 @@ def new_sidebar(request):
 
 def products(request):
     return render(request, 'products.html')
+
+def products_list_detail(request):
+    products = Products.objects.all()  # Recupera todos os produtos do banco de dados
+    context = {
+        'products': products
+    }
+    return render(request, 'products_list_detail.html', context)
 
 @csrf_exempt
 def product(request, codigo):
@@ -158,7 +165,7 @@ def rate_product(request):
             produto = Products.objects.get(id=produto_id)
             user = request.user
 
-            review = Review.objects.create(
+            review = Reviews.objects.create(
                 product=produto,
                 author=user,
                 rating=rating,
@@ -210,7 +217,7 @@ def add_review(request, product_id):
 def get_reviews(request, product_id):
     try:
         product = Products.objects.get(id=product_id)
-        reviews = Review.objects.filter(product=product).values('rating', 'comment', 'author__username', 'created_at')
+        reviews = Reviews.objects.filter(product=product).values('rating', 'comment', 'author__username', 'created_at')
         return JsonResponse({'success': True, 'reviews': list(reviews)})
     except Products.DoesNotExist:
         return JsonResponse({'success': False, 'message': 'Produto não encontrado'})
@@ -259,22 +266,65 @@ def companies(request):
     return render(request, 'companies.html', context)
 
 def company(request, id):
-    company = get_object_or_404(Company, pk=id)
+    company = get_object_or_404(Company, id=id)
+    
+    if request.method == 'POST':
+        form = AlterCompanyForm(request.POST, request.FILES, instance=company)
+        if form.is_valid():
+            form.save()
+            return redirect('companies')  # Redireciona para a lista de empresas após salvar
+    else:
+        form = AlterCompanyForm(instance=company)
+
     context = {
-        'company': {
-            'logo': company.logo.url if company.logo and hasattr(company.logo, 'url') else '/static/img/placeholder.png',
-            'company_name': company.company_name,
-            'trade_name': company.trade_name,
-            'cnpj': company.cnpj,
-            'email': company.email,
-            'phone': company.phone,
-            'cell_phone': company.cell_phone,
-            'address': company.address,
-            'number': company.number,
-            'neighborhood': company.neighborhood,
-            'complement': company.complement,
-            'city': company.city,
-            'state': company.state,
-        }
+        'company': company,
+        'states': [
+                        ('AC', 'Acre'), 
+                        ('AL', 'Alagoas'), 
+                        ('AP', 'Amapá'), 
+                        ('AM', 'Amazonas'),            
+                        ('BA', 'Bahia'), 
+                        ('CE', 'Ceará'), 
+                        ('DF', 'Distrito Federal'), 
+                        ('ES', 'Espírito Santo'),            
+                        ('GO', 'Goiás'), 
+                        ('MA', 'Maranhão'), 
+                        ('MT', 'Mato Grosso'), 
+                        ('MS', 'Mato Grosso do Sul'),            
+                        ('MG', 'Minas Gerais'), 
+                        ('PA', 'Pará'), 
+                        ('PB', 'Paraíba'), 
+                        ('PR', 'Paraná'),            
+                        ('PE', 'Pernambuco'), 
+                        ('PI', 'Piauí'), 
+                        ('RJ', 'Rio de Janeiro'), 
+                        ('RN', 'Rio Grande do Norte'),            
+                        ('RS', 'Rio Grande do Sul'), 
+                        ('RO', 'Rondônia'), 
+                        ('RR', 'Roraima'), 
+                        ('SC', 'Santa Catarina'),            
+                        ('SP', 'São Paulo'), 
+                        ('SE', 'Sergipe'), 
+                        ('TO', 'Tocantins')
+        ],
+        'segments': [
+                        ('automotivo', 'Automotivo'),
+                        ('alimentos_bebidas', 'Alimentos e Bebidas'),
+                        ('farmaceutico', 'Farmacêutico'),
+                        ('quimico', 'Químico'),
+                        ('textil', 'Têxtil'),
+                        ('tecnologia', 'Tecnologia'),
+                        ('energia', 'Energia'),
+                        ('construcao', 'Construção Civil'),
+                        ('metalurgico', 'Metalúrgico'),
+                        ('papel_celulose', 'Papel e Celulose'),
+                        ('mineracao', 'Mineração'),
+                        ('agroindustria', 'Agroindústria'),
+                        ('petroquimico', 'Petroquímico'),
+                        ('embalagens', 'Embalagens'),
+                        ('logistica', 'Logística'),
+                        ('vestuario', 'Vestuário e Acessórios Esportivos')
+                    ]
+
     }
     return render(request, 'company.html', context)

@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.prod_n1l, .prod_n1m, .prod_n1r {
+    padding: 1rem;
+}
+
+.prod_n1l {
+    width: 25%;
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prod_n1li img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    border-radius: 8px;
+}
+
+.prod_n1li1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f00;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 5px;
+}
+
+.prod_n1m {
+    width: 50%;
+    padding-left: 1.5rem;
+}
+
+.prod_n1m p, .prod_n1m h6, .prod_n1m ul {
+    margin: 0 0 1rem 0;
+}
+
+.prod_n1m a {
+    color: #333;
+    text-decoration: none;
+}
+
+.prod_n1m ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.prod_n1r {
+    width: 25%;
+    text-align: right;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prod_n1r h4 {
+    color: #333;
+    font-size: 1.44rem;
+    margin-bottom: 0.5rem;
+}
+
+.prod_n1r .text_13 {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.prod_n1r h5 {
+    margin: 0.5rem 0;
+    color: #f90;
+}
+
+.prod_n1r h6 {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.button_new_1, .button_new_2 {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button_new_1 {
+    background-color: #f00;
+}
+
+.button_new_2 {
+    background-color: #00f;
+}
+
+.colo_2 {
+    color: #0a0;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+

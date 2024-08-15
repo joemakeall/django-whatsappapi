@@ -29,6 +29,7 @@ class Company(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
     logo = models.ImageField(upload_to='logos/', blank=True, null=True)
+    segment = models.CharField(max_length=100)
     password = models.CharField(max_length=128, blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -60,10 +61,10 @@ class Products(models.Model):
         if reviews.exists():
             total_rating = sum(review.rating for review in reviews)
             self.average_rating = total_rating / reviews.count()
-            self.total_reviews = reviews.count()  # Corrigido aqui
+            self.total_reviews = reviews.count()
         else:
             self.average_rating = 0
-            self.total_reviews = 0  # Corrigido aqui
+            self.total_reviews = 0 
         self.save()
 
 class Reviews(models.Model):

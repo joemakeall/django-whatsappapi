@@ -1,3 +1,5 @@
+{% extends 'dashboard_a.html' %}
+{% block content %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -6,14 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Produto</title>
     <link rel="stylesheet" href="{% static 'css/product.css' %}">
-    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/products/" class="back-link">Voltar à lista</a>
-        </nav>
-    </header>
     <main>
         <div class="product-detail">
             <div class="product-left">
@@ -117,9 +114,7 @@
             </form>
         </div>
     </main>
-    <footer>
-        <p>Footer content</p>
-    </footer>
     <script src="{% static 'js/product.js' %}"></script>
 </body>
 </html>
+{% endblock %}

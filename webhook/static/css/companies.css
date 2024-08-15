@@ -6,6 +6,31 @@ main.companies {
     flex-direction: column;
 }
 
+.filter-container.companies {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-container.companies input,
+.filter-container.companies select,
+.filter-container.companies button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-container.companies button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-container.companies button:hover {
+    background-color: #45a049;
+}
+
 /* Tabela */
 table.companies {
     width: 100%;

@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: calc(100% - 22px); /* Ajuste de largura para incluir padding */
+    padding: 10px;
+    margin-right: 10px; /* Adiciona margem à direita */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #555;
+}
+
+.input-group p {
+    margin-top: 10px;
+}
+
+.input-group p a {
+    color: #333;
+    text-decoration: none;
+}
+
+.input-group p a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para a página de cadastro */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f4f4f4;
+    padding: 20px; /* Adiciona padding superior */
+}
+
+.register-box {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    padding-left: 20px; /* Ajuste padding direito */
+    padding-right: 20px; /* Ajuste padding direito */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 10px; /* Adiciona margem superior */
+    margin-right: 10px; /* Adiciona margem à direita */
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-box .form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-box .input-group {
+    margin-bottom: 15px;
+    flex: 0 0 48%;
+}
+
+.register-box .input-group input[type="file"] {
+    padding: 3px;
+}
+
+.register-box .input-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.register-box .input-group button:hover {
+    background-color: #555;
+}
+
+.register-box .input-group p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register-box .input-group p a {
+    color: #333;
+    text-decoration: none;
+}
+
+.register-box .input-group p a:hover {
+    text-decoration: underline;
+}
+
+.input-group.inline {
+    align-items: center;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.input-group.inline input[type="checkbox"] {
+    margin-right: 10px; /* Ajuste conforme necessário */
+    float: right;
+}
+
+.input-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 305px;
+}

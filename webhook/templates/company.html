@@ -7,39 +7,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes da Empresa</title>
-    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <title>Detalhes da Empresa - Direção Digital</title>
+    <link rel="stylesheet" href="{% static 'css/company.css' %}">
 </head>
 
 <body>
-    <div class="content">
-        <div class="container">
-            <h1>Detalhes da Empresa</h1>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Detalhes da Empresa</h2>
+            <form action="{% url 'company' company.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="column">
+                        <div class="input-group">
+                            <label for="cnpj">CNPJ:</label>
+                            <input type="text" id="cnpj" name="cnpj" value="{{ company.cnpj }}" pattern="(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="trade_name">Nome Fantasia:</label>
+                            <input type="text" id="trade_name" name="trade_name" value="{{ company.trade_name }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="state_registration">Inscrição Estadual:</label>
+                            <input type="text" id="state_registration" name="state_registration" value="{{ company.state_registration }}" required>
+                        </div>
+                        <div class="input-group inline">
+                            <input type="checkbox" id="whatsapp" name="whatsapp" {% if company.whatsapp %}checked{% endif %}>
+                            <label for="whatsapp">Possui WhatsApp</label>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Telefone Fixo:</label>
+                            <input type="text" id="phone" name="phone" value="{{ company.phone }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="confirm_email">Confirmação de Email:</label>
+                            <input type="email" id="confirm_email" name="confirm_email" value="{{ company.confirm_email }}" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Digite um e-mail válido" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="number">Número:</label>
+                            <input type="text" id="number" name="number" value="{{ company.number }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="neighborhood">Bairro:</label>
+                            <input type="text" id="neighborhood" name="neighborhood" value="{{ company.neighborhood }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="city">Cidade:</label>
+                            <input type="text" id="city" name="city" value="{{ company.city }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="segment">Segmento:</label>
+                            <select id="segment" name="segment" required>
+                                <option value="">Selecione o Segmento</option>
+                                {% for key, name in segments %}
+                                <option value="{{ key }}" {% if company.segment == key %}selected{% endif %}>{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
 
-            <div class="company-details">
-                <!-- Mostrar logo da empresa -->
-                <div class="logo">
-                    <img src="{{ company.logo }}" alt="Logo da Empresa" onerror="this.onerror=null;this.src='{% static 'img/placeholder.png' %}'">
+                    <div class="column">
+                        <div class="input-group">
+                            <label for="company_name">Razão Social:</label>
+                            <input type="text" id="company_name" name="company_name" value="{{ company.company_name }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="responsible_name">Nome Responsável:</label>
+                            <input type="text" id="responsible_name" name="responsible_name" value="{{ company.responsible_name }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="instagram">@Instagram:</label>
+                            <input type="text" id="instagram" name="instagram" value="{{ company.instagram }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="cell_phone">Celular:</label>
+                            <input type="text" id="cell_phone" name="cell_phone" value="{{ company.cell_phone }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" value="{{ company.email }}" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Digite um e-mail válido" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="cep">CEP:</label>
+                            <input type="text" id="cep" name="cep" value="{{ company.cep }}" pattern="^\d{5}-\d{3}$" title="Formato do CEP: 12345-678" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="address">Endereço:</label>
+                            <input type="text" id="address" name="address" value="{{ company.address }}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="complement">Complemento:</label>
+                            <input type="text" id="complement" name="complement" value="{{ company.complement }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="state">Estado:</label>
+                            <select id="state" name="state" required>
+                                <option value="">Selecione o Estado</option>
+                                {% for state, label in states %}
+                                <option value="{{ state }}" {% if company.state == state %}selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="logo">Logomarca:</label>
+                            <input type="file" id="logo" name="logo" value="{{ company.logo }}" accept=".png, .jpg, .jpeg">
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Exibir detalhes da empresa -->
-                <p><strong>Razão Social:</strong> {{ company.company_name }}</p>
-                <p><strong>Nome Fantasia:</strong> {{ company.trade_name }}</p>
-                <p><strong>CNPJ:</strong> {{ company.cnpj }}</p>
-                <p><strong>Email:</strong> {{ company.email }}</p>
-                <p><strong>Telefone:</strong> {{ company.phone }}</p>
-                <p><strong>Celular:</strong> {{ company.cell_phone }}</p>
-                <p><strong>Endereço:</strong> {{ company.address }}, {{ company.number }}</p>
-                <p><strong>Bairro:</strong> {{ company.neighborhood }}</p>
-                <p><strong>Complemento:</strong> {{ company.complement }}</p>
-                <p><strong>Cidade:</strong> {{ company.city }}</p>
-                <p><strong>Estado:</strong> {{ company.state }}</p>
-            </div>
 
-            <a href="{% url 'companies' %}">Voltar para a Lista</a>
+                <div class="input-group">
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+            {% if message %}
+            <div class="message {% if message_type == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+            {% endif %}
         </div>
     </div>
-    <script src="{% static 'js/dashboard.js' %}"></script>
 </body>
 
 </html>
