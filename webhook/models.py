@@ -15,9 +15,12 @@ class Company(models.Model):
     trade_name = models.CharField(max_length=255)
     responsible_name = models.CharField(max_length=255)
     state_registration = models.CharField(max_length=20)
+    type_company = models.CharField(max_length=2)
     instagram = models.CharField(max_length=100, blank=True, null=True)
     whatsapp = models.BooleanField(default=False)
+    ddd_cp = models.CharField(max_length=4, blank=True, null=True)
     cell_phone = models.CharField(max_length=20, blank=True, null=True)
+    ddd_p = models.CharField(max_length=4, blank=True, null=True)    
     phone = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField()
     confirm_email = models.EmailField()
@@ -67,6 +70,12 @@ class Products(models.Model):
             self.total_reviews = 0 
         self.save()
 
+    def get_prices(self):
+        return self.prices.all()  # Acessa todos os preços associados a este produto
+
+    def get_attributes(self):
+        return self.attributes.all()  # Acessa todos os atributos associados a este produto
+
 class Reviews(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     rating = models.IntegerField()
@@ -76,3 +85,27 @@ class Reviews(models.Model):
 
     def __str__(self):
         return f'Review for {self.product}'
+
+class PriceTable(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='prices')
+    original_price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    discount_percentage = models.FloatField(default=0)
+
+    def calculate_discount(self):
+        if self.discount_price and self.original_price:
+            self.discount_percentage = 100 * (1 - (self.discount_price / self.original_price))
+        else:
+            self.discount_percentage = 0
+        self.save()
+
+    def __str__(self):
+        return f"{self.product.descricao} - {self.original_price} (Discount: {self.discount_percentage}%)"
+
+class ProductAttribute(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='attributes')
+    name = models.CharField(max_length=100)  # e.g., Size, Weight, Color, etc.
+    value = models.CharField(max_length=255)  # e.g., "Large", "1.5 kg", "Red", etc.
+    
+    def __str__(self):
+        return f"{self.product.descricao} - {self.name}: {self.value} {self.unit_of_measurement if self.unit_of_measurement else ''}"

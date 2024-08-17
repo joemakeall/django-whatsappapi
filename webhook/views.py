@@ -7,8 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.utils import timezone
-from .models import Messages, Company, Products, Reviews
-from django.core.paginator import Paginator
+from .models import Messages, Company, Products, Reviews, PriceTable, ProductAttribute
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import AlterCompanyForm
 
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
@@ -54,20 +54,183 @@ def new_sidebar(request):
     return render(request, 'new_sidebar.html')
 
 def products(request):
-    return render(request, 'products.html')
+    products = Products.objects.all().order_by('codigo')  # Ordenando por 'codigo' ou outro campo relevante
+
+    # Configurando a paginação
+    paginator = Paginator(products, 10)  # 10 produtos por página
+    page_number = request.GET.get('page', 1)  # Página padrão é 1 se não for fornecida
+
+    # Garantindo que o número da página seja um inteiro válido
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        page_number = 1
+
+    # Garantindo que o número da página não seja menor que 1
+    if page_number < 1:
+        page_number = 1
+
+    try:
+        products = paginator.page(page_number)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    # Gerar a lista de números de página para o template
+    current_page = products.number
+    start_page = max(current_page - 4, 1)
+    end_page = min(current_page + 5, paginator.num_pages)
+    pages = list(range(start_page, end_page + 1))
+
+    context = {
+        'products': products, 
+        'paginator': paginator, 
+        'pages': pages, 
+        'current_page': current_page
+    }
+
+    # Passando os produtos, o paginador e a lista de páginas para o template
+    return render(request, 'products.html', context)
 
 def products_list_detail(request):
     products = Products.objects.all()  # Recupera todos os produtos do banco de dados
+
+    # Configurando a paginação
+    paginator = Paginator(products, 10)  # 10 produtos por página
+    page_number = request.GET.get('page', 1)  # Página padrão é 1 se não for fornecida
+
+    # Garantindo que o número da página seja um inteiro válido
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        page_number = 1
+
+    # Garantindo que o número da página não seja menor que 1
+    if page_number < 1:
+        page_number = 1
+
+    try:
+        products = paginator.page(page_number)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    # Gerar a lista de números de página para o template
+    current_page = products.number
+    start_page = max(current_page - 4, 1)
+    end_page = min(current_page + 5, paginator.num_pages)
+    pages = list(range(start_page, end_page + 1))
+
+    for product in products:
+        price_info = product.prices.first()  # Assumindo que há um PriceTable por produto.
+        if price_info:
+            product.preco_original = price_info.original_price
+            product.preco_desconto = price_info.discount_price
+            product.desconto = price_info.discount_percentage
+        else:
+            product.preco_original = None
+            product.preco_desconto = None
+            product.desconto = None
+
     context = {
-        'products': products
+        'products': products, 
+        'paginator': paginator, 
+        'pages': pages, 
+        'current_page': current_page
     }
+
     return render(request, 'products_list_detail.html', context)
+
+def products_group_detail(request):
+    products = Products.objects.all()  # Recupera todos os produtos do banco de dados
+
+    # Configurando a paginação
+    paginator = Paginator(products, 10)  # 10 produtos por página
+    page_number = request.GET.get('page', 1)  # Página padrão é 1 se não for fornecida
+
+    # Garantindo que o número da página seja um inteiro válido
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        page_number = 1
+
+    # Garantindo que o número da página não seja menor que 1
+    if page_number < 1:
+        page_number = 1
+
+    try:
+        products = paginator.page(page_number)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    # Gerar a lista de números de página para o template
+    current_page = products.number
+    start_page = max(current_page - 4, 1)
+    end_page = min(current_page + 5, paginator.num_pages)
+    pages = list(range(start_page, end_page + 1))
+
+    for product in products:
+        price_info = product.prices.first()  # Assumindo que há um PriceTable por produto.
+        if price_info:
+            product.preco_original = price_info.original_price
+            product.preco_desconto = price_info.discount_price
+            product.desconto = price_info.discount_percentage
+        else:
+            product.preco_original = None
+            product.preco_desconto = None
+            product.desconto = None
+
+    context = {
+        'products': products, 
+        'paginator': paginator, 
+        'pages': pages, 
+        'current_page': current_page
+    }
+
+    return render(request, 'products_group_detail.html', context)
 
 @csrf_exempt
 def product(request, codigo):
-    produto = get_object_or_404(Products, codigo=codigo)
-    reviews = Reviews.objects.filter(product=produto)
-    return render(request, 'product.html', {'produto': produto, 'reviews': reviews})
+    # Obtém o produto pelo código
+    product = get_object_or_404(Products, codigo=codigo)
+    
+    # Obtém os reviews associados ao produto
+    reviews = Reviews.objects.filter(product=product)
+    
+    # Obtém os preços associados ao produto
+    prices = PriceTable.objects.filter(product=product)
+    
+    # Obtém os atributos associados ao produto
+    attributes = ProductAttribute.objects.filter(product=product)
+    
+    # Calcula os preços
+    discount_price = None
+    original_price = None
+    discount_percentage = None
+    
+    if prices.exists():
+        # Usamos o primeiro preço para exibir
+        price = prices.first()
+        discount_price = price.discount_price
+        original_price = price.original_price
+        discount_percentage = price.discount_percentage
+    
+    # Renderiza o template com os dados necessários
+    context = {
+        'product': product,
+        'reviews': reviews,
+        'prices': prices,
+        'attributes': attributes,
+        'discount_price': discount_price,
+        'original_price': original_price,
+        'discount_percentage': discount_percentage,
+    }
+    
+    return render(request, 'product.html', context)
 
 @csrf_exempt
 def register(request):
@@ -225,7 +388,7 @@ def get_reviews(request, product_id):
 def companies(request):
     # Obter filtros e número da página da requisição
     name_filter = request.GET.get('name', '')
-    page_number = int(request.GET.get('page', 1))
+    page_number = request.GET.get('page', 1)  # Página padrão é 1 se não for fornecida
 
     # Consultar as empresas, aplicando filtro se necessário
     queryset = Company.objects.all()
@@ -233,8 +396,24 @@ def companies(request):
         queryset = queryset.filter(company_name__icontains=name_filter)
 
     # Configurar a paginação
-    paginator = Paginator(queryset, 10)
-    page = paginator.get_page(page_number)
+    paginator = Paginator(queryset, 10)  # 10 empresas por página
+
+    # Garantindo que o número da página seja um inteiro válido
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        page_number = 1
+
+    # Garantindo que o número da página não seja menor que 1
+    if page_number < 1:
+        page_number = 1
+
+    try:
+        page = paginator.page(page_number)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
 
     # Preparar dados das empresas para o contexto
     companies = []
@@ -251,14 +430,14 @@ def companies(request):
         companies.append(company_data)
 
     # Gerar lista de números de páginas para a paginação
-    page_range = list(paginator.page_range)
+    current_page = page.number
 
     # Contexto para o template
     context = {
         'companies': companies,
+        'paginator': paginator,
+        'current_page': current_page,
         'totalPages': paginator.num_pages,
-        'currentPage': page_number,
-        'page_range': page_range,
         'name_filter': name_filter
     }
 

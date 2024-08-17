@@ -3,15 +3,13 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
-    <link rel="stylesheet" href="{% static 'css/products_list_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products_group_detail.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
     <main class="products-container">
         <div class="filter-container products">
@@ -22,11 +20,11 @@
                 <option value="inactive">Inativo</option>
             </select>
             <button id="filterButton">Filtrar</button>
-            <a href="{% url 'products' %}" class="list-icon"><i class="fa fa-list-ul"></i></a>
-            <a href="{% url 'products_group_detail' %}"><i class="fa fa-th"></i></a>
+            <a href="{% url 'products' %}"><i class="fa fa-list-ul"></i></a>
         </div>
-        {% for product in products %}
-        <div class="row product-line">
+
+        <div class="products-row">
+            {% for product in products %}
             <div class="product-card">
                 <a href="/product/{{ product.codigo }}/">
                     <div class="product-image">
@@ -40,46 +38,22 @@
                 {% if product.novo %}
                     <div class="new-tag">New</div>
                 {% endif %}
-            </div>            
-
-            <div class="product-info">
-                <p class="product-description">
-                    <a href="#">{{ product.descricao }}</a>
-                </p>
-                <h4><a href="#">Computer & Accessories</a></h4>
-                <ul class="product-attributes">
-                    {% for attribute in product.get_attributes %}
-                        <li>{{ attribute.name }}: {{ attribute.value }}</li>
-                    {% endfor %}
-                </ul>
+                <div class="product-info">
+                    <p class="product-title"><a href="#">{{ product.descricao }}</a></p>
+                    <h4>R$ {{ product.preco_desconto|floatformat:2 }}<br>
+                        <span class="discount">R$ {{ product.preco_original|floatformat:2 }} - {{ product.desconto|floatformat:2 }}%</span>
+                    </h4>
+                    <p class="shipping-cost">Custo de Envio: R$ {{ product.frete|floatformat:2 }}</p>
+                    <p class="stock">Estoque: <span class="stock-available">0</span></p>
+                </div>
+                <div class="product-actions">
+                    <a class="button-favorite" href="#"><i class="fa fa-heart-o"></i> Favoritar</a>
+                    <a class="button-cart" href="#"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a>
+                </div>
             </div>
-
-            <div class="price">
-                <h4>R$ {{ product.preco_desconto|floatformat:2 }}<br>
-                    <span class="discount">R$ {{ product.preco_original|floatformat:2 }} - {{ product.desconto|floatformat:2 }}%</span>
-                </h4>
-                <h5>
-                    <span class="rating-stars">
-                        {% for i in "12345" %}
-                            {% if i|add:"0" <= product.average_rating %}
-                                <i class="fa fa-star colo_5" aria-hidden="true"></i>
-                            {% elif i|add:"0" == product.average_rating|floatformat:1 %}
-                                <i class="fa fa-star-half-o colo_5" aria-hidden="true"></i>
-                            {% else %}
-                                <i class="fa fa-star-o colo_7" aria-hidden="true"></i>
-                            {% endif %}
-                        {% endfor %}
-                    </span>
-                    <span class="reviews">{{ product.total_reviews }} Reviews</span>
-                </h5>
-                                
-                <h6><span class="normal">Custo de Envio:</span> R$ {{ product.frete|floatformat:2 }}</h6>
-                <h6><span class="normal">Estoque:</span> <span class="colo_2">{{ product.estoque }}</span></h6>
-                <h6><a class="button-favorite" href="#"><i class="fa fa-heart-o"></i> Favoritar</a></h6>
-                <h6><a class="button-cart" href="#"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a></h6>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+
         <div class="pagination products">
             {% if products.has_previous %}
                 <button id="prevPage" onclick="window.location.href='?page=1'">&laquo; Primeiro</button>
@@ -96,7 +70,7 @@
             {% endif %}
     </div>
     </main>
+    <script src="{% static 'js/products_group_detail.js' %}"></script>
 </body>
-
 </html>
 {% endblock %}

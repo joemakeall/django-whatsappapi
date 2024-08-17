@@ -38,7 +38,7 @@
                 {% for company in companies %}
                 <tr>
                     <td><input type="checkbox" class="company-checkbox" value="{{ company.id }}"></td>
-                    <td><img src="{{ company.logo }}" alt="Logo" onerror="this.onerror=null;this.src='{% static 'img/placeholder.png' %}'" class="logo-img"></td>
+                    <td><img src="{{ company.logo }}" alt="Logo" onerror="this.onerror=null;this.src='{% static 'img/notimage.png' %}'" class="logo-img"></td>
                     <td>{{ company.company_name }}</td>
                     <td>{{ company.cnpj }}</td>
                     <td>{{ company.address }}</td>
@@ -57,20 +57,21 @@
         </table>
 
         <div class="pagination companies">
-            {% if currentPage > 1 %}
-            <a href="?page=1{% if name_filter %}&name={{ name_filter }}{% endif %}">&laquo; Primeiro</a>
-            <a href="?page={{ currentPage|add:-1 }}{% if name_filter %}&name={{ name_filter }}{% endif %}">&lsaquo; Anterior</a>
+            {% if current_page > 1 %}
+                <button id="prevPage" onclick="window.location.href='?page=1{{ name_filter|default:''|urlencode }}'">&laquo; Primeiro</button>
+                <button id="prev"     onclick="window.location.href='?page={{ current_page|add:-1 }}{{ name_filter|default:''|urlencode }}'">&lsaquo; Anterior</button>
+                <a href='?page={{ current_page|add:-1 }}'>{{ current_page|add:-1 }}</a>
             {% endif %}
-
-            {% for num in page_range %}
-            <a href="?page={{ num }}{% if name_filter %}&name={{ name_filter }}{% endif %}" class="{% if num == currentPage %}active{% endif %}">{{ num }}</a>
-            {% endfor %}
-
-            {% if currentPage < totalPages %}
-            <a href="?page={{ currentPage|add:1 }}{% if name_filter %}&name={{ name_filter }}{% endif %}">&rsaquo; Próximo</a>
-            <a href="?page={{ totalPages }}{% if name_filter %}&name={{ name_filter }}{% endif %}">Último &raquo;</a>
+            
+            <div id="paginationNumbers"><span>{{ current_page }}</span></div>
+        
+            {% if current_page < paginator.num_pages %}
+                <a href='?page={{ current_page|add:1 }}'>{{ current_page|add:1 }}</a>
+                <button id="next"     onclick="window.location.href='?page={{ current_page|add:1 }}{{ name_filter|default:''|urlencode }}'">&rsaquo; Próximo</button>
+                <button id="nextPage" onclick="window.location.href='?page={{ paginator.num_pages }}{{ name_filter|default:''|urlencode }}'">Último &raquo;</button>
             {% endif %}
         </div>
+
     </main>
     <script src="{% static 'js/companies.js' %}" defer></script>
 </body>

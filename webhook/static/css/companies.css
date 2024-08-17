@@ -63,6 +63,9 @@ table.companies td img {
     height: auto;
 }
 
+/* Logo auternativo*/
+
+
 /* Ícones de ações */
 .actions.companies i {
     cursor: pointer;
@@ -85,10 +88,15 @@ table.companies td img {
     cursor: pointer;
     padding: 10px;
     margin: 0 5px;
+    border-radius: 4px;
 }
 
 .pagination.companies button:hover {
     background-color: #45a049;
+}
+
+.pagination.companies a {
+    padding: 10px;
 }
 
 .pagination.companies #paginationNumbers {
@@ -96,14 +104,12 @@ table.companies td img {
     align-items: center;
 }
 
-.pagination.companies #paginationNumbers span {
-    padding: 10px;
+.pagination.companies #paginationNumbers {
+    padding: 8px;
     margin: 0 5px;
     cursor: pointer;
-}
-
-.pagination.companies #paginationNumbers span.active {
     font-weight: bold;
     background-color: #4CAF50;
     color: white;
+    border-radius: 4px;
 }

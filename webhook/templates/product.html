@@ -6,44 +6,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Produto</title>
+    <title>Detalhes do product</title>
     <link rel="stylesheet" href="{% static 'css/product.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" >
 </head>
 <body>
     <main>
         <div class="product-detail">
             <div class="product-left">
                 <div class="product-image-card">
-                    {% if produto.imagem %}
-                        <img src="{{ produto.imagem }}" alt="{{ produto.descricao }}" class="main-image">
+                    {% if product.imagem %}
+                        <img src="{{ product.imagem }}" alt="{{ product.descricao }}" class="main-image">
                     {% else %}
                         <div class="default-image">Imagem não disponível</div>
                     {% endif %}
                 </div>
                 <div class="product-carousel">
                     <div class="carousel">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_1.jpg" alt="Imagem do produto 1" class="carousel-image">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_2.jpg" alt="Imagem do produto 2" class="carousel-image">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ produto.codigo|default:"12345" }}_3.jpg" alt="Imagem do produto 3" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_1.jpg" alt="Imagem do product 1" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_2.jpg" alt="Imagem do product 2" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_3.jpg" alt="Imagem do product 3" class="carousel-image">
                     </div>
                 </div>
             </div>
             <div class="product-right">
-                <h1>{{ produto.descricao }}</h1>
+                <h1>{{ product.descricao }}</h1>
                 <div class="product-rating">
                     <span class="rating-stars">
                         {% for i in "12345" %}
-                            <i class="fa fa-star {% if i|add:"0" <= produto.average_rating %}selected{% endif %}" data-value="{{ i }}"></i>
+                            <i class="fa fa-star {% if i|add:"0" <= product.average_rating %}selected{% endif %}" data-value="{{ i }}"></i>
                         {% endfor %}
                     </span>
-                    <span class="reviews">{{ produto.total_reviews }} Reviews</span>
+                    <span class="reviews">{{ product.total_reviews }} Reviews</span>
                     <a href="#add-review" class="review-link">Faça uma avaliação</a>
                 </div>
-                <p><strong>Preço:</strong> {{ produto.preco|default:"R$ 0,00" }}</p>
-                <p><strong>Código:</strong> {{ produto.codigo|default:"12345" }}</p>
-                <p><strong>EAN:</strong> {{ produto.ean|default:"0000000000000" }}</p>
-                <p><strong>Em Estoque:</strong> {{ produto.estoque|default:"0" }}</p>
+                <h4>
+                    {% if prices %}
+                        {% with prices.first as price %}
+                            R$ {{ price.discount_price|floatformat:2 }}<br>
+                            <span class="discount">R$ {{ price.original_price|floatformat:2 }} - {{ price.discount_percentage|floatformat:2 }}%</span>
+                        {% endwith %}
+                    {% else %}
+                        Preço não disponível
+                    {% endif %}
+                </h4>
+                <p><strong>Código:</strong> {{ product.codigo|default:"12345" }}</p>
+                <p><strong>EAN:</strong> {{ product.ean|default:"0000000000000" }}</p>
+                <p><strong>Em Estoque:</strong> {{ product.estoque|default:"0" }}</p>
                 <div class="quantity">
                     <button class="btn btn-decrement">-</button>
                     <input type="number" value="1" class="quantity-input" readonly>
@@ -51,10 +60,10 @@
                 </div>
                 <button class="btn btn-primary">Adicionar ao Carrinho</button>
                 <div class="product-description">
-                    <p><strong>Descrição:</strong> {{ produto.descricao_completa|default:"Descrição do produto não disponível." }}</p>
+                    <p><strong>Descrição:</strong> {{ product.descricao_completa|default:"Descrição do product não disponível." }}</p>
                 </div>
                 <div class="product-tags">
-                    <strong>Tags:</strong> {{ produto.tags|default:"exemplo, tags" }}
+                    <strong>Tags:</strong> {{ product.tags|default:"exemplo, tags" }}
                 </div>
             </div>
         </div>
@@ -91,9 +100,13 @@
                     {% endif %}
                 </div>
                 <div id="info" class="tab-pane">
-                    <p><strong>Marca:</strong> {{ produto.brand|default:"Marca não disponível" }}</p>
-                    <p><strong>Dimensões:</strong> {{ produto.dimensions|default:"Dimensões não disponíveis" }}</p>
-                    <p><strong>Peso:</strong> {{ produto.weight|default:"Peso não disponível" }}</p>
+                    {% if attributes %}
+                        {% for attribute in attributes %}
+                            <p><strong>{{ attribute.name }}:</strong> {{ attribute.value|default:"Valor não disponível" }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>Informações adicionais não disponíveis.</p>
+                    {% endif %}
                 </div>
             </div>           
         </div>
@@ -101,7 +114,7 @@
         <!-- Formulário de avaliação -->
         <div id="add-review">
             <h2>Adicionar Avaliação</h2>
-            <form method="post" action="{% url 'add_review' produto.id %}">
+            <form method="post" action="{% url 'add_review' product.id %}">
                 {% csrf_token %}
                 <div class="rating">
                     {% for i in "12345" %}

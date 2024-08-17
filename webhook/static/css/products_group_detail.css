@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-container input,
+.filter-container select,
+.filter-container button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-container button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-container button:hover {
+    background-color: #45a049;
+}
+
+.products-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.products-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    flex: 1 1 calc(33.333% - 20px); /* Ajuste para 3 colunas */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.new-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff0;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.product-info {
+    padding: 15px;
+    text-decoration: none;
+}
+
+.product-info p, .product-info h4, .product-info ul {
+    margin: 0 0 1px 0;
+}
+
+.product-info a {
+    color: #333;
+    text-decoration: none;
+}
+
+.product-title {
+    font-size: 16px;
+    margin: 0;
+}
+
+.discount {
+    color: #f00;
+}
+
+.shipping-cost, .stock {
+    font-size: 14px;
+}
+
+.product-actions {
+    margin-top: auto;
+}
+
+.button-favorite, .button-cart {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.button-favorite {
+    background-color: #f00;
+}
+
+.button-cart {
+    background-color: #00f;
+}
+
+.button-favorite i, .button-cart i {
+    margin-right: 5px;
+}
+
+.button-cart{
+    margin-bottom: 10px;
+}
+.product-actions{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Paginação */
+.pagination.products {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination.products button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+.pagination.products button:hover {
+    background-color: #45a049;
+}
+
+.pagination.products a {
+    padding: 10px;
+}
+
+.pagination.products #paginationNumbers {
+    display: flex;
+    align-items: center;
+}
+
+.pagination.products #paginationNumbers {
+    padding: 8px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+
+}
