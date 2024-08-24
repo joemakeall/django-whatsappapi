@@ -15,10 +15,8 @@
 <body>
     <main class="companies">
         <div class="filter-container companies">
-            <form method="get" action="{% url 'companies' %}">
-                <input type="text" id="nameFilter" name="name" placeholder="Filtrar pelo nome da empresa" value="{{ name_filter }}">
-                <button id="filterButton">Filtrar</button>
-            </form>
+            <input type="text" id="nameFilter" placeholder="Filtrar pelo nome da empresa" value="{{ name_filter }}">
+            <button id="filterButton">Filtrar</button>
         </div>
 
         <table id="companyTable" class="companies">
@@ -34,7 +32,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="companyTableBody">
                 {% for company in companies %}
                 <tr>
                     <td><input type="checkbox" class="company-checkbox" value="{{ company.id }}"></td>
@@ -59,7 +57,7 @@
         <div class="pagination companies">
             {% if current_page > 1 %}
                 <button id="prevPage" onclick="window.location.href='?page=1{{ name_filter|default:''|urlencode }}'">&laquo; Primeiro</button>
-                <button id="prev"     onclick="window.location.href='?page={{ current_page|add:-1 }}{{ name_filter|default:''|urlencode }}'">&lsaquo; Anterior</button>
+                <button id="prev" onclick="window.location.href='?page={{ current_page|add:-1 }}{{ name_filter|default:''|urlencode }}'">&lsaquo; Anterior</button>
                 <a href='?page={{ current_page|add:-1 }}'>{{ current_page|add:-1 }}</a>
             {% endif %}
             
@@ -67,11 +65,10 @@
         
             {% if current_page < paginator.num_pages %}
                 <a href='?page={{ current_page|add:1 }}'>{{ current_page|add:1 }}</a>
-                <button id="next"     onclick="window.location.href='?page={{ current_page|add:1 }}{{ name_filter|default:''|urlencode }}'">&rsaquo; Próximo</button>
+                <button id="next" onclick="window.location.href='?page={{ current_page|add:1 }}{{ name_filter|default:''|urlencode }}'">&rsaquo; Próximo</button>
                 <button id="nextPage" onclick="window.location.href='?page={{ paginator.num_pages }}{{ name_filter|default:''|urlencode }}'">Último &raquo;</button>
             {% endif %}
         </div>
-
     </main>
     <script src="{% static 'js/companies.js' %}" defer></script>
 </body>

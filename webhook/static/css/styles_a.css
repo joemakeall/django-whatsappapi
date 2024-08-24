@@ -115,7 +115,7 @@ header {
 }
 
 /* Estilo para a barra lateral */
-.sidebar {
+#sidebar {
     width: 60px;
     background-color: #222;
     color: white;
@@ -130,30 +130,50 @@ header {
     padding-top: 100px;
 }
 
-.sidebar.active {
+#sidebar.active {
     width: 200px;
 }
 
-.sidebar-content {
+#sidebar-content {
     padding: 10px;
     flex-grow: 1;
     overflow-y: auto;
 }
 
-.sidebar-content ul {
+#sidebar-menu {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.sidebar-content ul li {
+#sidebar-menu li {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Permite que o submenu empurre o item para baixo */
+    align-items: flex-start; /* Alinha o submenu à esquerda do item de menu pai */
     padding: 10px;
     cursor: pointer;
     position: relative;
 }
 
-.sidebar-content ul li a {
+/* Indicador de submenu (seta) */
+#sidebar-menu li.menu-item > a:after {
+    content: "\f105"; /* Código da seta (font-awesome) */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+#sidebar-menu li.menu-item.open > a:after {
+    transform: rotate(90deg); /* Rotaciona a seta ao abrir */
+}
+
+/* Ajusta o padding inferior do item de menu para acomodar o submenu */
+#sidebar-menu li.menu-item {
+    padding-bottom: 0; /* Remove o padding extra quando o submenu está aberto */
+}
+
+#sidebar-menu li a {
     display: flex;
     align-items: center;
     color: white;
@@ -161,16 +181,53 @@ header {
     width: 100%;
 }
 
-.sidebar-content ul li a span {
+#sidebar-menu li a span {
     margin-left: 10px;
     display: none;
 }
 
-.sidebar.active .sidebar-content ul li a span {
+#sidebar.active #sidebar-menu li a span {
     display: inline;
 }
 
-.sidebar-toggle {
+/* Estilo para o submenu */
+.submenu {
+    display: none; /* Inicialmente oculto */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative; /* Permite que o submenu afete o layout do item pai */
+    width: 100%; /* Garante que o submenu ocupe a mesma largura que o item de menu pai */
+}
+
+/* Exibe o submenu quando o item pai está ativo */
+.menu-item.open .submenu {
+    display: block; /* Exibe o submenu */
+    /* Não há necessidade de max-height ou overflow, já que estamos usando display: block */
+}
+
+#submenu li{
+    padding-bottom: 0;
+}
+
+/* Estilo para itens do submenu */
+.submenu li {
+    padding: 10px; /* Reduz o espaço entre as linhas */
+    cursor: pointer;
+}
+
+.submenu li a {
+    color: white;
+    text-decoration: none;
+    padding-left: 15px; /* Ajuste este valor conforme necessário */
+}
+
+.submenu li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para o botão de alternância da barra lateral */
+#sidebar-toggle {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,9 +244,10 @@ header {
     z-index: 1000;
 }
 
-.sidebar-toggle i {
+#sidebar-toggle i {
     font-size: 10px;
 }
+
 
 /* Estilo para o conteúdo principal */
 main {

@@ -1,18 +1,62 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // Funcionalidade da barra lateral
-    const sidebar = document.querySelector('.sidebar');
-    const toggleButton = document.querySelector('.sidebar-toggle i');
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('sidebar-toggle').querySelector('i');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
 
-    sidebarToggle.addEventListener('click', function() {
+    // Função para fechar todos os submenus
+    function closeAllSubmenus() {
+        document.querySelectorAll('.menu-item').forEach(function (item) {
+            item.classList.remove('open');
+            const submenu = item.querySelector('.submenu');
+            if (submenu) {
+                submenu.style.maxHeight = '0';
+            }
+        });
+    }
+
+    // Toggle da sidebar
+    sidebarToggle.addEventListener('click', function () {
         sidebar.classList.toggle('active');
         if (sidebar.classList.contains('active')) {
             toggleButton.classList.replace('fa-chevron-right', 'fa-chevron-left');
         } else {
             toggleButton.classList.replace('fa-chevron-left', 'fa-chevron-right');
+            closeAllSubmenus(); // Fecha todos os submenus quando a barra lateral é recolhida
         }
     });
+
+    // Funcionalidade de submenu
+    const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+    submenuToggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault(); // Previne o comportamento padrão do link
+            const parentMenuItem = this.closest('.menu-item');
+            const submenu = parentMenuItem.querySelector('.submenu');
+
+            if (!sidebar.classList.contains('active')) {
+                // Reabre a sidebar ao clicar em um submenu com a sidebar recolhida
+                sidebar.classList.add('active');
+                toggleButton.classList.replace('fa-chevron-right', 'fa-chevron-left');
+            }
+
+            // Fecha outros submenus
+            document.querySelectorAll('.menu-item').forEach(function (item) {
+                if (item !== parentMenuItem) {
+                    item.classList.remove('open');
+                    item.querySelector('.submenu').style.maxHeight = '0';
+                }
+            });
+
+            // Abre ou fecha o submenu clicado
+            parentMenuItem.classList.toggle('open');
+            const isOpen = parentMenuItem.classList.contains('open');
+            submenu.style.maxHeight = isOpen ? submenu.scrollHeight + 'px' : '0';
+        });
+    });
+
 
     //================ Line chart With Multiple Lines ================//
 

@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Carousel</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+
+        .review-author img {
+            border-radius: 50%;
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .review-author a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .review-text {
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .review-rating {
+            color: #ffcc00;
+            font-size: 18px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 20px; /* Ajuste o tamanho dos botões */
+            height: 20px; /* Ajuste o tamanho dos botões */
+            border-radius: 50%; /* Torna o botão redondo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em; /* Ajuste o tamanho do ícone */
+            z-index: 10; /* Garante que o botão esteja sobre o conteúdo */
+        }
+
+        .carousel-button.left {
+            left: 10px;
+        }
+
+        .carousel-button.right {
+            right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .review-author img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .review-text {
+                font-size: 14px;
+            }
+
+            .carousel-button {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="center_9" class="clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="center_6_top clearfix">
+                    <h2>Testimonials</h2>
+                    <p>Sed cursus ante dapibus diam. Sed nisi</p>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        {% for review in reviews %}
+                        <div class="carousel-slide">
+                            <div class="review-author">
+                                <img src="{{ review.profile_photo_url }}" alt="{{ review.author_name }}">
+                                <div>
+                                    <a href="#">{{ review.author_name }}</a>
+                                    <div class="review-rating">
+                                        {% with review.rating as rating %}
+                                            {% for star in "★★★★★" %}
+                                                {% if forloop.counter <= rating %}
+                                                    <span>{{ star }}</span>
+                                                {% else %}
+                                                    <span>☆</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </div>
+                                    <div class="review-date">{{ review.date }}</div>
+                                </div>
+                            </div>
+                            <div class="review-text">{{ review.text }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-button left" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button right" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-wrapper').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        // Inicializar o carrossel
+        showSlide(currentIndex);
+
+        // Auto slide
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+
+</html>

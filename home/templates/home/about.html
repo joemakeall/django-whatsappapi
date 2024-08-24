@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estrutura de Logo e Texto</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'District-MediumItalic';
+            src: url("{% static 'home/fonts/District-MediumItalic-Regular.ttf' %}") format('truetype');
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .header-container {
+            background-color: rgb(7, 241, 163);
+            padding: 10px;
+        }
+        .logo-column img {
+            width: 60px; /* Ajusta o tamanho do logo */
+            height: auto;
+        }
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza verticalmente as frases */
+        }
+        .top-line {
+            display: flex;
+            align-items: center; /* Alinha verticalmente os itens */
+            font-family: 'District-MediumItalic', sans-serif;
+            font-size: 1.5em; /* Ajuste o tamanho da fonte conforme necessário */
+            font-weight: 700;
+            text-shadow: 
+                -1px -1px 0 #FFFFFF,  
+                1px -1px 0 #FFFFFF,
+                -1px  1px 0 #FFFFFF,
+                1px  1px 0 #FFFFFF; /* Contorno branco */
+            margin-bottom: 0.50px; /* Reduz o espaço entre as linhas */
+        }
+        .dating_0 {
+            color: #ff6600;
+            background-color: aqua;
+        }
+        .dating_3 {
+            color: #0099cc;
+        }
+        .bottom-line {
+            font-family: 'District-MediumItalic', sans-serif;
+            font-size: 0.7em;
+            color: #333;
+            letter-spacing: 0.8px; /* Ajuste o espaçamento das letras */
+            background-color: #ff6600;
+            padding: 2px;
+            width: 100%; /* Força o preenchimento do mesmo espaço horizontal */
+        }
+        p {
+            margin-top: 0px; /* Espaço entre o texto e o conteúdo acima */
+            text-align: justify; /* Justifica o texto */
+            font-size: 1em;
+            color: #333;
+        }
+        ul {
+            display: flex;
+            gap: 10px; /* Espaçamento entre os ícones */
+            list-style: none;
+            padding: 0;
+            margin-top: 10px; /* Espaço entre o parágrafo e os ícones */
+        }
+        ul li {
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row header-container">
+                <div class="col-sm-4 d-flex">
+                    <!-- Coluna do Logo -->
+                    <div class="logo-column mr-2">
+                        <img src="{% static 'home/img/logo.png' %}" alt="Logo">
+                    </div>
+                    <!-- Coluna do Texto -->
+                    <div class="text-column">
+                        <div class="top-line">
+                            <span class="dating_0">ÓLEO</span>
+                            <span class="dating_3">NOVO</span>
+                        </div>
+                        <div class="bottom-line">
+                            <span class="dating_4">Super Troca de Óleo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Parágrafo Justificado -->
+            <p>
+                Class aptent taciti sociosqu ad litora
+                torquent per conubia nostra, per inceptos C.
+                Curabitursodales Sed dignissim lacinia nunc.
+                Fusce nec tellus sed Class aptent taciti
+                sociosqu ad litora torquent per conubia nostra, per inceptos C. 
+                Curabitursodales ligula in libero.
+                Sed dignissim lacinia nunc.
+            </p>
+            <!-- Ícones -->
+            <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

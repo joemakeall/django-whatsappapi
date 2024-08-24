@@ -1,5 +1,6 @@
 import os
 import json
+import requests
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, HttpResponse
@@ -11,8 +12,10 @@ from .models import Messages, Company, Products, Reviews, PriceTable, ProductAtt
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import AlterCompanyForm
 
+
 WEBHOOK_VERIFY_TOKEN = settings.WEBHOOK_VERIFY_TOKEN
 GRAPH_API_TOKEN = settings.GRAPH_API_TOKEN
+GOOGLE_API_KEY = settings.GOOGLE_API_KEY
 
 @csrf_exempt
 def index(request):
@@ -391,21 +394,17 @@ def companies(request):
     page_number = request.GET.get('page', 1)  # Página padrão é 1 se não for fornecida
 
     # Consultar as empresas, aplicando filtro se necessário
-    queryset = Company.objects.all()
+    companies = Company.objects.all()
     if name_filter:
-        queryset = queryset.filter(company_name__icontains=name_filter)
+        companies = companies.filter(company_name__icontains=name_filter)
 
     # Configurar a paginação
-    paginator = Paginator(queryset, 10)  # 10 empresas por página
+    paginator = Paginator(companies, 10)  # 10 empresas por página
 
     # Garantindo que o número da página seja um inteiro válido
     try:
         page_number = int(page_number)
     except ValueError:
-        page_number = 1
-
-    # Garantindo que o número da página não seja menor que 1
-    if page_number < 1:
         page_number = 1
 
     try:
@@ -429,19 +428,15 @@ def companies(request):
         }
         companies.append(company_data)
 
-    # Gerar lista de números de páginas para a paginação
-    current_page = page.number
-
     # Contexto para o template
     context = {
         'companies': companies,
         'paginator': paginator,
-        'current_page': current_page,
+        'current_page': page.number,
         'totalPages': paginator.num_pages,
-        'name_filter': name_filter
+        'name_filter': name_filter,
     }
 
-    # Renderizar a página HTML com o contexto
     return render(request, 'companies.html', context)
 
 def company(request, id):

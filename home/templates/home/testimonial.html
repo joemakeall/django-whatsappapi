@@ -1,0 +1,366 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service-Center</title>
+    
+    <!-- Carregar CSS -->
+    <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/font-awesome.min.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    
+    <!-- Carregar JS -->
+    <script src="{% static 'home/js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+	
+	<section id="header" class="clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="header clearfix">
+					<div class="col-sm-6 header_left clearfix">
+						<div class="header_left_inner">
+							<ul>
+								<li>
+									<p>
+										<i class="fa fa-map-o"></i>
+										<a
+											href="https://www.google.com/maps/place/Óleo+Novo+Comércio+de+Filtros+e+Lubrificantes+para+Autos/@-23.4106712,-46.8324455,17z/data=!3m1!4b1!4m6!3m5!1s0x94cf1d42ea37dd5f:0xf1b19228b699c4aa!8m2!3d-23.4106712!4d-46.8324455!16s%2Fg%2F1ptyssxzy?hl=pt-BR&entry=ttu">
+											Av. das Juritis, 122 - Polvilho, Cajamar - SP</a>
+									</p>
+								</li>
+								<li>
+									<p>
+										<span><i class="fa fa-phone"> </i><a href="#">(11)
+												4498-0223</a>&nbsp;&nbsp;</span>
+										<span><i class="fa fa-whatsapp"></i><a href="https://wa.me/11989386170">(11)
+												98938-6170</a></span>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6 header_right clearfix">
+						<div class="header_right_inner">
+							<div class="col-sm-7 header_right_inner_left clearfix">
+								<div class="header_right_inner_left_inner">
+									<p>Funcionamento: <span class="dating_1">Seg-Sex: 08:00-18:00;
+											Sáb:08:00-12:00</span></p>
+								</div>
+							</div>
+							<div class="col-sm-5 header_right_inner_right clearfix">
+								<div class="header_right_inner_right_inner">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-youtube-square"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://www.instagram.com/oleo.novo/"><i
+													class="fa fa-instagram"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="top" class="cd-secondary-nav clearfix">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{% url 'home:index' %}">
+						<img src="{% static 'home/img/logo.png' %}" alt="Logo">
+						<div class="text-container">
+							<span class="dating_0">
+								<span class="dating_2">ÓLEO</span>
+								<span class="dating_3">NOVO</span>
+							</span>
+							<span class="dating_4">Super Troca de Óleo</span>
+						</div>
+					</a>
+				</div>
+				<div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="{% url 'home:index' %}">Home</a></li>
+							<li><a href="{% url 'home:service' %}">Serviços</a></li>
+							<li><a href="{% url 'home:gallery' %}">Galeria</a></li>
+							<li><a href="{% url 'home:team' %}">Equipe</a></li>
+							<li><a href="{% url 'home:pricing' %}">Preços</a></li>
+							<li><a class="active_tab"  href="{% url 'home:testimonial' %}">Depoimentos</a></li>
+							<li><a href="{% url 'home:faq' %}">FAQ</a></li>
+							<li><a href="{% url 'home:contact' %}">Contato</a></li>
+							<li class="dropdown">
+								<a class="tag_menu tag_menu_right" href="{% url 'home:blog' %}" data-toggle="dropdown"
+									role="button" aria-expanded="false">Mais<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu drop_1" role="menu">
+									<li><a href="{% url 'home:index' %}">Home</a></li>
+									<li><a href="{% url 'home:gallery' %}">Galeria</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</section>
+
+	<section id="service" class="testimonial clearfix">
+		<div class="service_main">
+			<div class="container">
+				<div class="row">
+					<div class="service_main_top clearfix">
+						<div class="service_main_top_inner">
+							<p>LOREM IPSUM DOLOR AMET CONSECTETUR</p>
+						</div>
+						<div class="center_1_top_inner_2">
+							<h2>Testimonials</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="center_9" class="clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="center_6_top clearfix">
+					<h2>Testimonials</h2>
+					<p>Sed cursus ante dapibus diam. Sed nisi</p>
+				</div>
+				<div class="center_9_middle clearfix">
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos C. Curabitursodales ligula in libero sem at nibh elementum.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/10.jpg' %}" class="img-circle" alt="Testimonial 1"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Taciti Sociosqu</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Dolor sit amet, consectetur adipiscing elit. Integer nec odionec odio. Praesent Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/11.jpg' %}" class="img-circle" alt="Testimonial 2"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Ante Dapibus</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="center_9_middle clearfix">
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Sed dignissim.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/12.jpg' %}" class="img-circle" alt="Testimonial 3"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Ante Nec</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Nec tellus sed augue semper porta. Mauris massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos C. Curabitursodales ligula in libero.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/31.jpg' %}" class="img-circle" alt="Testimonial 4"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Sed Nisi</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="center_9_middle clearfix">
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos C. Curabitursodales ligula in libero. Sed dignissim lacinia nunc Mauris massa. Vestibulum.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/32.jpg' %}" class="img-circle" alt="Testimonial 5"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Ante Diam</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 center_9_middle_left">
+						<div class="center_9_middle_left_inner_1">
+							<p>Integer nec odionec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum per conubia nostra.</p>
+						</div>
+						<div class="center_9_middle_left_inner_2">
+							<div class="col-sm-2 testing_left clearfix">
+								<div class="testing_left_inner">
+									<p><img src="{% static 'home/img/33.jpg' %}" class="img-circle" alt="Testimonial 6"></p>
+								</div>
+							</div>
+							<div class="col-sm-10 testing_right clearfix">
+								<div class="testing_right_inner">
+									<p>Nulla Quis</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="gallery_2" class="clearfix">
+		<div class="head_gallery">
+			<div class="container">
+				<div class="row">
+					<div class="gallery_2 clearfix">
+						<h2>Praesent mauris, Fusce nec tellus sed</h2>
+						<p>Aptent taciti sociosqu ad litora torquent conubia nostra, per inceptos C. Curabitursodales ligula<br> nibh elementum imperdiet.</p>
+						<h3>Call: <a href="tel:15249169922">1-524-916-9922</a></h3>
+						<h5><a href="#">Make a designation</a></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+
+	<section id="footer" class="clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 footer_left">
+					<div class="line d-flex align-items-center">
+						<!-- Coluna do Logo -->
+						<div class="logo-column mr-2">
+							<img src="{% static 'home/img/logo.png' %}" alt="Logo">
+						</div>
+						<!-- Coluna do Texto -->
+						<div class="text-column">
+							<div class="top-line">
+								<span class="dating_0">ÓLEO</span>
+								<span class="dating_3">NOVO</span>
+							</div>
+							<div class="bottom-line">
+								<span class="dating_4">Super Troca de Óleo</span>
+							</div>
+						</div>
+					</div>
+					<p>
+						Reunimos mais de 10 anos de experiência, realizando serviços de manutenção e troca de óleo automotivo e de máquinas, com produtos de alta qualidade e uma equipe extremamente qualificada para garantir um excelente trabalho.
+					</p>
+					<ul class="social-icons">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3 footer_left">
+					<h2>Site Map</h2>
+					<h4><a href="{% url 'home:index' %}"><i class="fa fa-chevron-right"></i>Home</a></h4>
+					<h4><a href="{% url 'home:service' %}"><i class="fa fa-chevron-right"></i>Serviços</a></h4>
+					<h4><a href="{% url 'home:team' %}"><i class="fa fa-chevron-right"></i>Equipe</a></h4>
+					<h4><a href="{% url 'home:gallery' %}"><i class="fa fa-chevron-right"></i>Galeria</a></h4>
+					<h4><a href="{% url 'home:faq' %}"><i class="fa fa-chevron-right"></i>FAQ</a></h4>
+					<h4><a href="{% url 'home:contact' %}"><i class="fa fa-chevron-right"></i>Contato</a></h4>
+				</div>
+				<div class="col-sm-3 footer_left">
+					<h2>Serviços</h2>
+					<h4><a href="{% url 'home:about' %}"><i class="fa fa-chevron-right"></i>Lubrificantes</a></h4>
+					<h4><a href="#"><i class="fa fa-chevron-right"></i>Óleos Automotivos</a></h4>
+					<h4><a href="#"><i class="fa fa-chevron-right"></i>Óleos Industriais</a></h4>
+					<h4><a href="#"><i class="fa fa-chevron-right"></i>Manutenção Automotiva</a></h4>
+					<h4><a href="#"><i class="fa fa-chevron-right"></i>Filtros</a></h4>
+					<h4><a href="#"><i class="fa fa-chevron-right"></i>Aditivos</a></h4>
+				</div>
+				<div class="col-sm-3 footer_left">
+					<h2>Contato</h2>
+					<p>
+						Inscreva-se em nossa lista de emails para receber novidades. Fique tranquilo: nós não iremos compartilhar o seu email nem encher a sua caixa de entrada com anúncios pouco importantes.
+					</p>
+					<input type="text" class="form-control form-control_course" placeholder="Digite seu E-mail aqui*">
+					<h6><a href="#">Assinar</a></h6>
+				</div>
+			</div>
+		</div>
+	</section>	
+
+	<section id="footer_last" class="clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="footer_last clearfix">
+					<p class="website">© 2024 Direção Digital. All rights reserved | Design by
+						<a href="https://direcaodigital.com/"> Direção Digital</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		/*****Fixed Menu******/
+		var secondaryNav = $('.cd-secondary-nav'),
+			secondaryNavTopPosition = secondaryNav.offset().top;
+		$(window).on('scroll', function () {
+			if ($(window).scrollTop() > secondaryNavTopPosition) {
+				secondaryNav.addClass('is-fixed');
+			} else {
+				secondaryNav.removeClass('is-fixed');
+			}
+		});
+
+	});
+</script>
+
+</html>

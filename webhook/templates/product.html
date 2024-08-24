@@ -16,16 +16,16 @@
             <div class="product-left">
                 <div class="product-image-card">
                     {% if product.imagem %}
-                        <img src="{{ product.imagem }}" alt="{{ product.descricao }}" class="main-image">
+                        <img src="{{ product.imagem }}" alt="{{ product.descricao }}" class="main-image" onerror="this.onerror=null;this.src='https://b2b.hb.com.br/assets/images/produtos/notfound.png';">
                     {% else %}
                         <div class="default-image">Imagem não disponível</div>
                     {% endif %}
                 </div>
                 <div class="product-carousel">
                     <div class="carousel">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_1.jpg" alt="Imagem do product 1" class="carousel-image">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_2.jpg" alt="Imagem do product 2" class="carousel-image">
-                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_3.jpg" alt="Imagem do product 3" class="carousel-image">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_1.jpg" alt="Imagem do product 1" class="carousel-image" onerror="this.onerror=null;this.src='https://b2b.hb.com.br/assets/images/produtos/notfound.png';">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_2.jpg" alt="Imagem do product 2" class="carousel-image" onerror="this.onerror=null;this.src='https://b2b.hb.com.br/assets/images/produtos/notfound.png';">
+                        <img src="https://b2b.hb.com.br/assets/images/produtos/P_{{ product.codigo|default:"12345" }}_3.jpg" alt="Imagem do product 3" class="carousel-image" onerror="this.onerror=null;this.src='https://b2b.hb.com.br/assets/images/produtos/notfound.png';">
                     </div>
                 </div>
             </div>

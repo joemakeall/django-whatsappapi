@@ -42,22 +42,35 @@
             </ul>
         </nav>
     </header>
-    <aside class="sidebar">
-        <div class="sidebar-toggle">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-toggle" id="sidebar-toggle">
             <i class="fas fa-chevron-right"></i>
         </div>
-        <div class="sidebar-content">
-            <ul>
+        <div class="sidebar-content" id="sidebar-content">
+            <ul id="sidebar-menu">
                 <li><a href="{% url 'dashboard' %}"><i class="fas fa-home"></i><span>Home</span></a></li>
-                <li><a href="#"> <i class="fas fa-user"> </i><span>Profile </span></a></li>
-                <li><a href="#"> <i class="fas fa-cog"> </i><span>Settings </span></a></li>
-                <li><a href="{% url 'chat' %}"> <i class="fas fa-comments"> </i><Span>Chat </Span></a></li>
-                <li><a href="{% url 'products_list_detail' %}"> <i class="fas fa-glasses"> </i><Span>Products </Span></a></li>
-                <li><a href="{% url 'companies' %}"><i class="fas fa-industry"> </i><Span>Companies </Span></a></li>
-                <li><a href="#"> <i class="fas fa-sign-out-alt"> </i><span>Logout </span></a></li>
+                <li class="menu-item" id="profile-menu">
+                    <a href="#" class="submenu-toggle"><i class="fas fa-user"></i><span>Profile</span></a>
+                    <ul class="submenu" id="submenu">
+                        <li><a href="#">Submenu Item 1</a></li>
+                        <li><a href="#">Submenu Item 2</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item" id="settings-menu">
+                    <a href="#" class="submenu-toggle"><i class="fas fa-cog"></i><span>Settings</span></a>
+                    <ul class="submenu" id="submenu">
+                        <li><a href="#">Submenu Item 1</a></li>
+                        <li><a href="#">Submenu Item 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'chat' %}"><i class="fas fa-comments"></i><span>Chat</span></a></li>
+                <li><a href="{% url 'products_list_detail' %}"><i class="fas fa-glasses"></i><span>Products</span></a></li>
+                <li><a href="{% url 'companies' %}"><i class="fas fa-industry"></i><span>Companies</span></a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
             </ul>
         </div>
-    </aside>
+    </aside>   
+    
     <main>
         {% block content %}
         <!-- Conteúdo será carregado aqui -->
